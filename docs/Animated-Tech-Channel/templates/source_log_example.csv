@@ -1,0 +1,3 @@
+claim_id,claim,source_url,evidence,confidence,scene_id,status
+C001,This is a fictional two-buyer example,,Fictional illustration,not_applicable,E001_S001,LABEL_FICTIONAL
+C002,Guarded inventory updates must enforce stock nonnegative,https://learn.microsoft.com/en-us/sql/t-sql/queries/update-transact-sql,Check official UPDATE semantics before publication,verified_semantics,E001_S011,VERIFY_IMPLEMENTATION_DETAILS

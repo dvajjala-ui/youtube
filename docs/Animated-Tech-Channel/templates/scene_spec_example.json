@@ -1,0 +1,44 @@
+{
+  "episodeId": "E001",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "nature": "fictional_educational_reconstruction",
+  "narrationAudio": "public/audio/E001_narration.wav",
+  "scenes": [
+    {
+      "id": "E001_S001",
+      "type": "cold_open",
+      "startFrame": 0,
+      "durationFrames": 360,
+      "narrationCueIds": [
+        "N001"
+      ],
+      "visualText": [
+        "ONLY 1 LEFT"
+      ],
+      "props": {
+        "customerCount": 2,
+        "stock": 1
+      },
+      "sourceClaimIds": []
+    },
+    {
+      "id": "E001_S002",
+      "type": "split_checkout",
+      "startFrame": 360,
+      "durationFrames": 390,
+      "narrationCueIds": [
+        "N002"
+      ],
+      "visualText": [
+        "2 CONFIRMATIONS",
+        "1 ITEM"
+      ],
+      "props": {
+        "flawedSimulation": true
+      },
+      "sourceClaimIds": []
+    }
+  ]
+}

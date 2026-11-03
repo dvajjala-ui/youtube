@@ -1,0 +1,1 @@
+At 9:41, the store showed one laptop left. Two customers clicked Buy at almost exactly the same moment. Both requests reached the API. Both read the same number: one. A few seconds later, both customers received a confirmation. But the warehouse had only one laptop. The system wasn't slow. The decision was split into two steps, and another request slipped through the gap.
