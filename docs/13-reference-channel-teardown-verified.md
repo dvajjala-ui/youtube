@@ -48,12 +48,14 @@ will not have. Do not treat his curve as your curve.
 
 Read the split, not the totals:
 
-- The six incident/story uploads average roughly 405K views. The two conventional uploads average
-  under 6K. That is about a 70x gap inside one channel with one audience.
-- Duration tracks with views: every video above 90K views is 14:57 or longer. The 9:52 video is the
-  second-worst performer. `docs/00-README.md` currently targets "8 to 12 minutes" — the evidence in
-  front of you says 15 to 25 minutes is the format that wins here, because an incident needs room to
-  breathe and because mid-rolls need 8+ minutes anyway.
+- The six narrative uploads (everything except the listicle and the 2-hour live-coding) average
+  **437,190 views**. The two conventional uploads average **5,698**. That is a **77x gap** inside one
+  channel with one audience.
+- Length is necessary but not sufficient: every video above 90K views runs 14:57 or longer, and the
+  9:52 listicle is the second-worst performer. But the ~2-hour MapReduce video is the *worst*, so the
+  rule is "15 to 25 minutes", not "longer is better". `docs/00-README.md` currently targets "8 to 12
+  minutes" — the evidence in front of you says 15 to 20, because an incident needs room to breathe and
+  because mid-rolls need 8+ minutes anyway.
 - Cadence: 8 uploads between Jul 27 and Oct 30, 2026, so roughly one every two weeks. That is the
   real cost signal — one high-effort video per fortnight, not volume.
 - Kubernetes at 105K in 3 days means the current velocity is still climbing; do not read 105K as a

@@ -63,8 +63,9 @@ most encouraging verified fact in this file, and it has a shelf life.
 | When sponsors show up | Agency rate card for 10K to 50K subs in tech/finance: $750 to $5,000 per mid-roll. No documented case found of the exact subscriber count when Reducible, Branch Education or Fireship signed their first deal | creatorsagency |
 
 Now read your reference channel against that table. He is at **125 views per subscriber** versus the
-187-per-subscriber median path to 10K subs, and his story videos average about 405K views while his two
-conventional videos average under 6K. That gap is the format working, not the audience being large.
+187-per-subscriber median path to 10K subs, and his six narrative videos average about 437K views while
+his two conventional videos average under 6K. That gap is the format working, not the audience being
+large.
 Also note the account was created in **January 2015** and has 180 public GitHub repos — this is depth
 built over a decade, presented as a young channel.
 
