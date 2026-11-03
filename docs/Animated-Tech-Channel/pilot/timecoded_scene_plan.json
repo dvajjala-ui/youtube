@@ -1,0 +1,74 @@
+{
+  "title": "The Last Item Sold Twice",
+  "nature": "fictional engineering explanation",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "timing_status": "candidate only; replace after human-approved TTS",
+  "scenes": [
+    {
+      "id": "inventory",
+      "start_seconds": 0,
+      "end_seconds": 6,
+      "narration_beat": "At 9:41, the store showed one laptop left.",
+      "component": "InventoryCounter",
+      "animation_intent": "enter store, show STOCK 1"
+    },
+    {
+      "id": "buyers",
+      "start_seconds": 6,
+      "end_seconds": 12,
+      "narration_beat": "Two customers clicked Buy at almost the same moment.",
+      "component": "TwoCustomers",
+      "animation_intent": "simultaneous button click, split packets"
+    },
+    {
+      "id": "read",
+      "start_seconds": 12,
+      "end_seconds": 20,
+      "narration_beat": "Both requests reached the API, and both read stock equals one.",
+      "component": "ApiWithTwoReads",
+      "animation_intent": "two request branches, two DB reads 1"
+    },
+    {
+      "id": "double_accept",
+      "start_seconds": 20,
+      "end_seconds": 27,
+      "narration_beat": "Two confirmations went out. But there was only one laptop.",
+      "component": "TwoReceipts",
+      "animation_intent": "two accept receipts vs one product; status conflict"
+    },
+    {
+      "id": "race_window",
+      "start_seconds": 27,
+      "end_seconds": 37,
+      "narration_beat": "The check and the update happened separately. Between those steps another request slipped through.",
+      "component": "CheckThenWrite",
+      "animation_intent": "highlight gap between read and update"
+    },
+    {
+      "id": "fake_fix",
+      "start_seconds": 37,
+      "end_seconds": 44,
+      "narration_beat": "Looking up the stock again in application code wouldn't fix the race.",
+      "component": "RepeatRead",
+      "animation_intent": "show read race persists"
+    },
+    {
+      "id": "atomic",
+      "start_seconds": 44,
+      "end_seconds": 53,
+      "narration_beat": "Instead, the database needs one atomic decision: decrease stock only if above zero.",
+      "component": "AtomicUpdate",
+      "animation_intent": "assemble conditional SQL; one affected row"
+    },
+    {
+      "id": "resolution",
+      "start_seconds": 53,
+      "end_seconds": 60,
+      "narration_beat": "One customer succeeds. One gets out of stock. The decision is indivisible.",
+      "component": "Resolution",
+      "animation_intent": "split into success and stock depleted"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+# Episode Brief: E___
+- **Working title:**
+- **Genre:** fictional reconstruction / verified case / conceptual deep dive
+- **One-line conflict:**
+- **Viewer's question:**
+- **Why it matters:**
+- **Technical root cause:**
+- **One correct implementation insight:**
+- **Five required visuals:**
+- **Audience knowledge assumed:**
+- **What must be sourced:**
+- **Main sources:**
+- **Run time target / spoken word target:**
+- **Thumbnail concept:**
+- **Commercial rights risks:**
+- **Approval owner and date:**

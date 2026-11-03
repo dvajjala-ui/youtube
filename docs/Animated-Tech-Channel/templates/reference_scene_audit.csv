@@ -1,0 +1,7 @@
+video_url,timestamp,inspection_method,observed_visual,observed_voice,narrative_beat,technical_fact,original_technique,not_observed,confidence,reviewer
+,00:00,NOT REVIEWED,,,hook,,,TRUE,not assessed,
+,00:15,NOT REVIEWED,,,hook escalation,,,TRUE,not assessed,
+,00:30,NOT REVIEWED,,,premise,,,TRUE,not assessed,
+,02:00,NOT REVIEWED,,,explanation,,,TRUE,not assessed,
+,05:00,NOT REVIEWED,,,complication,,,TRUE,not assessed,
+,END,NOT REVIEWED,,,resolution,,,TRUE,not assessed,
