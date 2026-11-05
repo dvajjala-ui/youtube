@@ -36,14 +36,10 @@ Adding an API key to your Oracle user is a credential change, so do it yourself 
    `C:\Users\dwarkesh.vajjala\.oci\oci_api_key_public.pem` (the key pair is already generated; the private key never leaves your machine).
 3. Click **Add**. The dialog shows a config preview; it must match `~/.oci/config`, which is already written with your user OCID, tenancy OCID, fingerprint `a7:c8:30:f2:e5:04:4e:5b:9f:99:80:43:e1:67:88:ab` and region `ap-mumbai-1`.
 
-Then I (or you) run:
+Then I (or you) run (the Python SDK version is primary; the bash/CLI version is equivalent):
 
 ```bash
-oci iam region list --query 'data[0]' --output table      # auth check
-```
-
-```bash
-bash infra/oracle/create-vm.sh                            # retries until A1 capacity appears
+python infra/oracle/create_vm.py                          # auth check, VCN, then retries until A1 capacity appears
 ```
 
 ```bash
