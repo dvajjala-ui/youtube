@@ -1,0 +1,9 @@
+asset_id,filepath,creator_or_provider,source_url,license_or_terms_url,commercial_use_verified,attribution_required,attribution_text,evidence_date,approved_by
+A001,narration/master.wav + narration/s1..s6.wav,Cartesia (sonic-3.6, voice "Clive - Measured Expert"),https://www.cartesia.ai/,https://www.cartesia.ai/terms,NO_FREE_PLAN,NO,"Cartesia Terms 5.3(b): on the FREE plan ""you will not monetize... any of Your Outputs"". YouTube monetised content needs a PAID plan (Pro $5/mo). Regenerate this narration under Pro before publishing.",2026-11-03,BLOCKED_NEEDS_PAID_PLAN
+A002,composition/src/* (Remotion code),this repo,,-,https://www.remotion.dev/license,YES_individual,NO,"Remotion is free for individuals and companies of 3 or fewer; a company licence is required beyond that",2026-11-03,USER_MUST_CONFIRM
+A003,system fonts (Segoe UI / Cascadia Mono / Consolas),Microsoft (OS-installed),-,-,YES_rendered_text,NO,"rendered to pixels, not redistributed as a font file",2026-11-03,AUTO
+A004,on-screen facts and figures,Cloudflare postmortem,https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/,-,YES_facts_and_short_quotes,YES_recommended,"Cloudflare blog, 12 July 2019",2026-11-03,AUTO
+A005,on-screen engine-swap claim,Cloudflare postmortem,https://blog.cloudflare.com/making-the-waf-40-faster/,-,YES_facts,YES_recommended,"Cloudflare blog, 1 July 2020",2026-11-03,AUTO
+A006,demo-lab/redos.py,this repo (measured locally on CPython 3.14.6),-,-,YES,NO,,2026-11-03,AUTO
+A007,background music,NONE - deliberately no music under narration,-,-,NOT_APPLICABLE,NO,"no music = no Content ID risk",2026-11-03,AUTO
+A008,sound effects,NONE yet,-,-,NOT_APPLICABLE,NO,"if added later, log each file here the day it is downloaded",2026-11-03,AUTO
