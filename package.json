@@ -1,0 +1,13 @@
+{
+  "name": "youtube-studio-monorepo",
+  "private": true,
+  "workspaces": [
+    "studio",
+    "episodes/*/composition",
+    "clients/*/*/composition"
+  ],
+  "scripts": {
+    "e01:dev": "npm run dev -w e01-composition",
+    "e01:build": "node studio/tools/build.mjs --episode episodes/E01-regex-outage"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "title": "One Regex Took Down Cloudflare (A True Story)",
+  "incident": "Cloudflare WAF outage, 2 July 2019",
+  "format": "short_vertical",
+  "fps": 30,
+  "language": "en",
+  "speed": 1.0,
+  "segments": [
+    { "id": "s1", "text": "Twenty seven minutes. Eighty percent of Cloudflare's traffic, gone. From one regular expression." },
+    { "id": "s2", "text": "July second, twenty nineteen. At thirteen forty two U T C, an engineer deployed one small change to the firewall rules." },
+    { "id": "s3", "text": "The rule ran in simulate mode. Real traffic passed through it, but nothing was blocked. Simulate mode still runs the expression." },
+    { "id": "s4", "text": "And this part of the pattern makes the engine branch instead of finishing. Twenty three steps. Then five thousand, three hundred and fifty three." },
+    { "id": "s5", "text": "C P U hit one hundred percent on every core. Traffic dropped by eighty percent, in more than one hundred and eighty cities." },
+    { "id": "s6", "text": "Twenty seven minutes. The fix was a rollback. And in Cloudflare's own words, the test suite never tested for runaway C P U. A regex is code. Test it for time." }
+  ]
+}

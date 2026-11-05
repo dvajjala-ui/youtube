@@ -1,0 +1,58 @@
+name: render-smoke
+
+# Free alternative to a render box: GitHub-hosted Linux runners.
+# Free plan: 2,000 minutes/month on private repos, unlimited on public ones.
+# This job proves the pipeline bundles and renders on a clean machine. It uses
+# the placeholder (silent) clock unless CARTESIA_API_KEY is set as a repo secret,
+# in which case it renders real narration for the episode given in the dispatch input.
+
+on:
+  workflow_dispatch:
+    inputs:
+      episode:
+        description: "Episode or project folder (relative to repo root)"
+        default: "episodes/E01-regex-outage"
+      voice:
+        description: "Cartesia voice id (only used when CARTESIA_API_KEY secret exists)"
+        default: "b24f41fd-00a3-4cd8-992a-a0c9f13f3ef1"
+      frames:
+        description: "Number of frames to render (empty = full)"
+        default: "90"
+  push:
+    branches: [main, docs/playbook-and-e01]
+    paths: ["studio/**", "episodes/**/composition/**", ".github/workflows/render.yml"]
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      EPISODE: ${{ github.event.inputs.episode || 'episodes/E01-regex-outage' }}
+      FRAMES: ${{ github.event.inputs.frames || '90' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Narration (real if secret exists, placeholder otherwise)
+        env:
+          CARTESIA_API_KEY: ${{ secrets.CARTESIA_API_KEY }}
+        run: |
+          cd "$EPISODE"
+          if [ -n "$CARTESIA_API_KEY" ]; then
+            node tools/tts.mjs --voice "${{ github.event.inputs.voice || 'b24f41fd-00a3-4cd8-992a-a0c9f13f3ef1' }}"
+          else
+            node tools/placeholder.mjs
+          fi
+      - name: Render
+        run: |
+          cd "$EPISODE"
+          if [ -n "$FRAMES" ]; then node tools/build.mjs --slice "$FRAMES" --allow-silent; else node tools/build.mjs --allow-silent; fi
+          ls -la composition/out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: render-${{ github.run_number }}
+          path: ${{ env.EPISODE }}/composition/out/*.mp4
+          retention-days: 7
