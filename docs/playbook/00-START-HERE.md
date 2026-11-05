@@ -4,6 +4,9 @@
 > Superseded docs were moved, unchanged, to `docs/archive/`. Still-useful reference docs stay in
 > `docs/` and `docs/Animated-Tech-Channel/`. `05` maps every one of them.
 
+> **Nov 5 update:** the project now has a second engine, a client video studio. Its plan is in
+> `docs/studio/00-business-plan.md`. This playbook stays the truth for the own channel.
+
 ## What this is
 
 A YouTube channel of **animated software-incident investigations** ("the regex that took down
