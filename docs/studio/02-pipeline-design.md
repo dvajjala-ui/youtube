@@ -112,7 +112,7 @@ languages × CTAs) of approved masters, which is exactly what §3 is designed fo
 
 ## 7. Build order
 
-1. Extract `studio/` from E01 (kit, clock, tools) and make E01 render from it unchanged. **1–2 days**
+1. ✅ **Done 2026-11-05.** `studio/` extracted (kit, theme, clock, layouts, tools); E01 renders from it byte-identically (frame 825 compared). See `studio/README.md`.
 2. `brand.json` + `layouts/` so one composition renders 16:9 / 9:16 / 1:1. **1 day**
 3. `brief.json` schema + `batch.mjs` + contact sheet. **1 day**
 4. Three sample projects for the portfolio (fake clients, real quality). **3–4 days**

@@ -5,8 +5,14 @@
     "dev": "remotion studio src/index.ts",
     "render": "remotion render src/index.ts E01Short out/e01-short.mp4"
   },
+  "studio": {
+    "comp": "E01Short",
+    "out": "out/e01-short.mp4",
+    "comps": { "E01Short": "out/e01-short.mp4" }
+  },
   "dependencies": {
     "@remotion/cli": "^4.0.0",
+    "@studio/kit": "*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "remotion": "^4.0.0"
