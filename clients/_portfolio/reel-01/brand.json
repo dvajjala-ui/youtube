@@ -1,0 +1,15 @@
+{
+  "name": "reel-01-postgres-aio",
+  "bg": "#0A0F1E",
+  "ink": "#EEF2FF",
+  "dim": "#8A94B8",
+  "fail": "#FF5A7A",
+  "ok": "#3FE0A3",
+  "warn": "#FFC857",
+  "panel": "#121A30",
+  "panelBorder": "#263354",
+  "accent": "#5CC8FF",
+  "mono": "'Cascadia Mono', 'JetBrains Mono', Consolas, 'Courier New', monospace",
+  "sans": "'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
+  "grid": 80
+}

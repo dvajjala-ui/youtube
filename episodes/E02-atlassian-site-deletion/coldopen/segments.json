@@ -1,0 +1,43 @@
+{
+  "title": "E02 cold open demo — consequence first",
+  "language": "en",
+  "speed": 0.92,
+  "segments": [
+    {
+      "id": "ticket",
+      "shot": "phone",
+      "text": "At seven forty-six in the morning, a customer opened a support ticket. Their entire site was gone.",
+      "pauseMs": 700
+    },
+    {
+      "id": "rewind",
+      "shot": "terminal",
+      "text": "Eight minutes earlier, a maintenance script had started its second batch. The first batch went exactly as planned.",
+      "pauseMs": 600
+    },
+    {
+      "id": "turn",
+      "shot": "terminal2",
+      "text": "Same script. Same green checks. But the second list did not point at apps. It pointed at the sites themselves.",
+      "pauseMs": 750
+    },
+    {
+      "id": "scale",
+      "shot": "counter",
+      "text": "Eight hundred and eighty-three sites. Deleted in twenty-three minutes.",
+      "pauseMs": 1000
+    },
+    {
+      "id": "chat",
+      "shot": "chat",
+      "text": "And the monitoring said nothing. Because deleting a site was a normal workflow.",
+      "pauseMs": 700
+    },
+    {
+      "id": "title",
+      "shot": "title",
+      "text": "This is how a routine cleanup became a fourteen-day recovery. And the one check that would have stopped it.",
+      "pauseMs": 1200
+    }
+  ]
+}

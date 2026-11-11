@@ -28,11 +28,11 @@ if (!VOICE) throw new Error("--voice <voice_id> is required");
 const manifest = JSON.parse(readFileSync(MANIFEST, "utf8"));
 const segments = manifest.segments;
 
-const SILENCE_MS = 220; // gap between segments in the master
-const silence = () => Buffer.alloc(Math.round((SAMPLE_RATE * SILENCE_MS) / 1000) * 2);
+const DEFAULT_PAUSE_MS = 220;
+const silence = (pauseMs) => Buffer.alloc(Math.round((SAMPLE_RATE * pauseMs) / 1000) * 2);
 
 // ------------------------------------------------------------- cartesia call
-async function synth(text) {
+async function synth(text, voice) {
   const res = await fetch("https://api.cartesia.ai/tts/sse", {
     method: "POST",
     headers: {
@@ -44,7 +44,7 @@ async function synth(text) {
       transcript: text,
       model_id: MODEL,
       language: manifest.language || "en",
-      voice: { mode: "id", id: VOICE },
+      voice: { mode: "id", id: voice },
       output_format: { container: "raw", encoding: "pcm_s16le", sample_rate: SAMPLE_RATE },
       speed: manifest.speed ?? 1.0,
       add_timestamps: true,
@@ -92,7 +92,12 @@ let cursor = 0; // seconds into the master
 let chars = 0;
 
 for (const seg of segments) {
-  const { pcm, words } = await synth(seg.text);
+  const pauseMs = seg.pauseMs ?? DEFAULT_PAUSE_MS;
+  if (!Number.isInteger(pauseMs) || pauseMs < 0 || pauseMs > 3000) {
+    throw new Error("Invalid pauseMs for segment " + seg.id + " (expected 0–3000)");
+  }
+  const { pcm, words } = await synth(seg.text, seg.voice ?? VOICE);
+  if (!pcm.length || !words.length) throw new Error("Missing audio or timestamps for segment " + seg.id);
   chars += seg.text.length;
   writeFileSync(join(outDir, `${seg.id}.wav`), toWav(pcm));
   const dur = pcm.length / (SAMPLE_RATE * 2);
@@ -111,12 +116,12 @@ for (const seg of segments) {
     w: "∂gap",
     raw: "",
     s: +(cursor + dur).toFixed(3),
-    e: +(cursor + dur + SILENCE_MS / 1000).toFixed(3),
+    e: +(cursor + dur + pauseMs / 1000).toFixed(3),
     seg: seg.id,
     gap: true,
   });
-  pieces.push(silence());
-  cursor += dur + SILENCE_MS / 1000;
+  pieces.push(silence(pauseMs));
+  cursor += dur + pauseMs / 1000;
 
   console.log(`${seg.id}  ${dur.toFixed(1)}s  ${words.length} words  ${seg.text.length} chars`);
 }
@@ -128,7 +133,7 @@ writeFileSync(
 );
 writeFileSync(
   join(outDir, "manifest.out.json"),
-  JSON.stringify({ voice: VOICE, model: MODEL, chars_billed_estimate: chars, duration_s: +cursor.toFixed(3) }, null, 2),
+  JSON.stringify({ voice: VOICE, ...(segments.some((seg) => seg.voice) ? { segment_voices: Object.fromEntries(segments.map((seg) => [seg.id, seg.voice ?? VOICE])) } : {}), model: MODEL, chars_billed_estimate: chars, duration_s: +cursor.toFixed(3) }, null, 2),
 );
 
 console.log(`\nmaster.wav  ${cursor.toFixed(1)}s  (${(cursor / 60).toFixed(2)} min)`);
