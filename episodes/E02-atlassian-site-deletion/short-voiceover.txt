@@ -1,0 +1,11 @@
+The test passed. The first production batch worked. The next one deleted eight hundred and eighty-three Atlassian sites.
+
+It was April fifth, twenty twenty-two. The team was retiring an app called Insight. The script needed app IDs. The second list contained site IDs.
+
+The deletion API accepted either kind. Give it an app ID, and it removes the app. Give it a site ID, and the whole site goes.
+
+Seven hundred and seventy-five customers lost access. Even some contact records disappeared. Affected users could struggle to file a support ticket about the outage.
+
+The team sped up recovery by rebuilding records with the original site IDs. Some customers waited up to fourteen days.
+
+A green test tells you what happened with the inputs you tested. Before a destructive job, show what the real batch will touch.

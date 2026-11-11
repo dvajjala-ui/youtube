@@ -1,0 +1,116 @@
+{
+  "title": "The cleanup that deleted 883 Atlassian sites",
+  "language": "en",
+  "segments": [
+    {
+      "id": "relief",
+      "speaker": "arjun",
+      "expression": "smile",
+      "gesture": "mug",
+      "shot": "desk",
+      "text": "Thirty sites. Old app gone. Everything else still works.",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "pauseMs": 220
+    },
+    {
+      "id": "banter",
+      "speaker": "maya",
+      "expression": "skeptical",
+      "gesture": "rest",
+      "shot": "reverse",
+      "text": "You said that like you were about to close the ticket.",
+      "voice": "a33f7a4c-100f-41cf-a1fd-5822e8fc253f",
+      "pauseMs": 160
+    },
+    {
+      "id": "joke",
+      "speaker": "arjun",
+      "expression": "smile",
+      "gesture": "mug",
+      "shot": "desk",
+      "text": "I was about to close my laptop.",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "pauseMs": 680
+    },
+    {
+      "id": "run",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "point",
+      "shot": "queue",
+      "text": "Then the next batch ran.",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "pauseMs": 200
+    },
+    {
+      "id": "scale",
+      "speaker": "arjun",
+      "expression": "shock",
+      "gesture": "rest",
+      "shot": "alert",
+      "text": "Twenty-three minutes later, eight hundred and eighty-three Atlassian sites had been deleted.",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "pauseMs": 930
+    },
+    {
+      "id": "disbelief",
+      "speaker": "maya",
+      "expression": "shock",
+      "gesture": "rest",
+      "shot": "reverse",
+      "text": "Sorry. Sites? I thought we were removing an app.",
+      "voice": "a33f7a4c-100f-41cf-a1fd-5822e8fc253f",
+      "pauseMs": 400
+    },
+    {
+      "id": "setup",
+      "speaker": "arjun",
+      "expression": "thinking",
+      "gesture": "point",
+      "shot": "workbench",
+      "text": "That's the part to look at. Same cleanup tool. Two different kinds of ID.",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "pauseMs": 200
+    },
+    {
+      "id": "app",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "point",
+      "shot": "app",
+      "text": "Give it an app ID, and it takes one thing out of the box.",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "pauseMs": 340
+    },
+    {
+      "id": "site",
+      "speaker": "maya",
+      "expression": "skeptical",
+      "gesture": "point",
+      "shot": "site",
+      "text": "Give it a site ID, and it takes the box.",
+      "voice": "a33f7a4c-100f-41cf-a1fd-5822e8fc253f",
+      "pauseMs": 600
+    },
+    {
+      "id": "turn",
+      "speaker": "arjun",
+      "expression": "thinking",
+      "gesture": "rest",
+      "shot": "desk",
+      "text": "The first list pointed to the apps. The second list pointed to the sites.",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "pauseMs": 260
+    },
+    {
+      "id": "next",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "ticket",
+      "text": "The first clue came from a customer. The job was still running.",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "pauseMs": 580
+    }
+  ]
+}

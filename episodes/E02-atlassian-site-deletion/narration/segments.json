@@ -1,0 +1,34 @@
+{
+  "title": "The Script That Deleted 883 Atlassian Sites",
+  "incident": "Atlassian cloud outage, 5 April 2022",
+  "format": "short_vertical",
+  "fps": 30,
+  "language": "en",
+  "speed": 1,
+  "segments": [
+    {
+      "id": "hook",
+      "text": "The test passed. The first production batch worked. The next one deleted eight hundred and eighty-three Atlassian sites."
+    },
+    {
+      "id": "intent",
+      "text": "It was April fifth, twenty twenty-two. The team was retiring an app called Insight. The script needed app IDs. The second list contained site IDs."
+    },
+    {
+      "id": "reveal",
+      "text": "The deletion API accepted either kind. Give it an app ID, and it removes the app. Give it a site ID, and the whole site goes."
+    },
+    {
+      "id": "impact",
+      "text": "Seven hundred and seventy-five customers lost access. Even some contact records disappeared. Affected users could struggle to file a support ticket about the outage."
+    },
+    {
+      "id": "recovery",
+      "text": "The team sped up recovery by rebuilding records with the original site IDs. Some customers waited up to fourteen days."
+    },
+    {
+      "id": "lesson",
+      "text": "A green test tells you what happened with the inputs you tested. Before a destructive job, show what the real batch will touch."
+    }
+  ]
+}
