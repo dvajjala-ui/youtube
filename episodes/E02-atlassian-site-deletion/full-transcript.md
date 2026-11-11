@@ -1,6 +1,6 @@
 # The Cleanup Script That Deleted 883 Sites — full transcript
 
-Production transcript for E02, target runtime **12–15 min** (estimate below: ~13:50).
+Production transcript for E02, target runtime **12–15 min** (estimate below: ~13:25).
 Spoken text is verbatim VO. Blockquotes are production notes (scene, props, clock,
 SFX) — never spoken. `[TAG]` lines are dramatized dialogue, labelled on screen.
 
@@ -16,7 +16,7 @@ SFX) — never spoken. `[TAG]` lines are dramatized dialogue, labelled on screen
 
 ---
 
-## Beat 1 · Cold open — consequence first (~1:08)
+## Beat 1 · Cold open — consequence first (~1:05)
 
 > Scene: phone-in-hand ticket prop (pouria grammar) → clock rewind 07:46→07:38 →
 > terminal green log → SCOPE flip red, `delete SITE … → OK` → 0→883 counter over
@@ -36,7 +36,7 @@ Some of those customers would wait fourteen days to get their work back. This is
 > Title card: "The cleanup script that deleted 883 sites" · "23 minutes to delete ·
 > 14 days to restore". Green "batch 01 ✓" chip flips to red "batch 02 ✗".
 
-## Beat 2 · The home and the app (~1:51)
+## Beat 2 · The home and the app (~1:48)
 
 > Scene: line-art analogy interlude (pouria grammar): a box = customer site, a card
 > inside = Insight app. Pull the card out; the box stays. Then product-faithful
@@ -60,7 +60,7 @@ The plan depended on the list pointing at the right kind of object. Nothing in t
 > Prop planted: two ID chips, identical shape, one labelled APP, one SITE — labels
 > fade out, leaving two opaque values. Callback in beat 4 and beat 8.
 
-## Beat 3 · Three green checks (~1:45)
+## Beat 3 · Three green checks (~1:42)
 
 > Scene: product-faithful review thread (approve stamps), staging run console,
 > batch-01 success panel. Three checks light green one at a time, word-synced.
@@ -85,7 +85,7 @@ Three green checks. Zero answers to the dangerous question. And the second batch
 
 > SFX: soft tick per check. The amber question stays on screen 1.5 s in silence.
 
-## Beat 4 · The second list (~1:38)
+## Beat 4 · The second list (~1:35)
 
 > Scene: two columns of opaque IDs side by side, no labels. Resolve-one-input
 > animation twice: app path (card leaves box, green OK) then site path (whole box
@@ -108,7 +108,7 @@ At seven thirty-eight the batch starts. Rows resolve. Rows delete. Every row ret
 
 A production check has to compare the result against the intent. Not against the return code.
 
-## Beat 5 · First clues (~1:43)
+## Beat 5 · First clues (~1:41)
 
 > Scene: #incident chat (BugX grammar, wojak avatars) escalating 07:46→08:17;
 > monitoring dashboard flat green beside it (the irony); support-form UI with
@@ -135,7 +135,7 @@ SUPPORT (arjun): I know. Stay on the line. We'll find you another way in.
 
 Every workaround was manual. Every conversation cost time the recovery did not have. So the recovery team had two jobs at once. Bring the sites back. And rebuild a way to reach the people who owned them.
 
-## Beat 6 · Seventy steps (~1:50)
+## Beat 6 · Seventy steps (~1:48)
 
 > Scene: site anatomy exploded view (catalogue record, identity, users/groups,
 > product DBs, attachments, billing/support, third-party apps) as connected cards;
@@ -164,7 +164,7 @@ And then the math lands. If every site needs that much remapping, the remaining 
 
 They needed a different starting point.
 
-## Beat 7 · Keep the identity (~1:37)
+## Beat 7 · Keep the identity (~1:34)
 
 > Scene: original site card returns with the SAME ID chip; dangling references
 > reconnect on their own, one by one, green. Side-by-side step counter: 70 → 34
@@ -187,7 +187,7 @@ The recovery turned on a design detail most customers never see. Keeping a site'
 
 > Prop callback: the site card from beat 2 returns, unchanged, ID intact.
 
-## Beat 8 · The check I would add (~2:13)
+## Beat 8 · The check I would add (~2:09)
 
 > Scene: proposed preview UI (labelled PROPOSED DESIGN): rows of ID · resolved
 > type · effect; summary line "883 sites selected" in red; job halts before any
@@ -223,26 +223,28 @@ The tool said OK. It always says OK. That was never the question.
 
 | Beat | Spoken words | Est. screen time |
 |------|-------------|------------------|
-| 1 cold open | 152 | 1:08 |
-| 2 home & app | 267 | 1:51 |
-| 3 green checks | 247 | 1:45 |
-| 4 second list | 232 | 1:38 |
-| 5 first clues | 242 | 1:43 |
-| 6 seventy steps | 263 | 1:50 |
-| 7 keep identity | 232 | 1:37 |
-| 8 the check | 315 | 2:13 |
-| **Total** | **1,950** | **~13:48** |
+| 1 cold open | 144 | 1:05 |
+| 2 home & app | 259 | 1:48 |
+| 3 green checks | 241 | 1:42 |
+| 4 second list | 226 | 1:35 |
+| 5 first clues | 237 | 1:41 |
+| 6 seventy steps | 258 | 1:48 |
+| 7 keep identity | 226 | 1:34 |
+| 8 the check | 306 | 2:09 |
+| **Total** | **1,897** | **~13:26** |
 
-Speech at ~2.45 words/s (sonic-3.6, speed 0.92) plus 400–900 ms inter-beat pauses
-and the marked silent holds (~32 s total). Word counts measured from the verbatim
-VO above. Lands inside the 12–15 min target with room for slower delivery; if a
-render runs long, trim beat 6's anatomy list first.
+Speech at ~2.45 words/s (sonic-3.6, speed 0.92) plus inter-beat pauses and the
+marked silent holds (~32 s total). Word counts are VO-only, measured from the
+verbatim text above (headers/notes excluded); they match
+`narration/segments.json` exactly. Final timings will be measured from the
+synthesized master. Lands inside the 12–15 min target; if a render runs long,
+trim beat 6's anatomy list first.
 
 ## YouTube chapters (approximate)
 
-0:00 The ticket at 7:46 · 1:09 The home and the app · 3:00 Three green checks ·
-4:46 The second list · 6:24 First clues · 8:07 Seventy steps · 9:58 Keep the
-identity · 11:36 The check I would add
+0:00 The ticket at 7:46 · 1:05 The home and the app · 2:54 Three green checks ·
+4:37 The second list · 6:12 First clues · 7:53 Seventy steps · 9:42 Keep the
+identity · 11:17 The check I would add
 
 ## Title / thumbnail
 
