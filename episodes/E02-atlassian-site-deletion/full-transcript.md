@@ -1,265 +1,208 @@
-# The Cleanup Script That Deleted 883 Sites — full transcript
+# The Cleanup Script That Deleted 883 Sites
 
-Production transcript for E02, target runtime **12–15 min** (estimate below: ~13:25).
-Spoken text is verbatim VO. Blockquotes are production notes (scene, props, clock,
-SFX) — never spoken. `[TAG]` lines are dramatized dialogue, labelled on screen.
+Full landscape episode script. The spoken lines below are verbatim for recording. Shot notes and holds are for the edit. The role labels and expressions are directions for casting and animation.
 
-- Voice: narrator = arjun/Akash (`cc71692b-f326-499b-8f8f-90a415b4d3fb`), speed 0.92,
-  pauses 400–900 ms between beats; dramatized lines use maya/Lauren where tagged.
-- Facts: Atlassian [April 2022 post-incident review](https://www.atlassian.com/blog/how-we-build/post-incident-review-april-2022-outage).
-  Invented dialogue and the preview-UI design are labelled dramatized/proposed.
-- Grammar: `qwen/reference-design-schema.md`. Clock spine (UTC chip), semantic
-  green/amber/red, monitor glow, grain + vignette, product-faithful UI, line-art
-  analogy interlude, prop callbacks: the green ✓, the green "OK", the site card.
-- Cold open reuses `composition/src/ColdOpen.tsx` scenes, extended with the
-  14-days consequence line (beat 1 below is the superset).
+Arjun, Maya, Ellis, Vik, Sam, and Daniel are fictional characters in a dramatization. Their conversations are invented. Arjun's seniority is a casting choice. The official review does not identify the person who ran the script by seniority. The account lead represents customer outreach and support. Daniel represents the executive communication role. The actual April 12 update was published by Atlassian CTO Sri Viswanath. Screens use illustrative data, identifiers, and interface states. All incident times are UTC. [Atlassian post-incident review](https://www.atlassian.com/blog/how-we-build/post-incident-review-april-2022-outage)
 
----
+## Beat 1 · The ticket
 
-## Beat 1 · Cold open — consequence first (~1:05)
+> **Shot `ticket`.** Frame one is a customer's cloud site failing to open. Match cut into a reconstructed support ticket with a new-ticket sound. Show April 5, 07:46 UTC. Keep the title card off the opening frame. Tag reconstructed screens and dramatized scenes when introduced.
 
-> Scene: phone-in-hand ticket prop (pouria grammar) → clock rewind 07:46→07:38 →
-> terminal green log → SCOPE flip red, `delete SITE … → OK` → 0→883 counter over
-> collapsing site cards, arjun shock in red glow → #incident chat → title card.
-> SFX: tick on rewind, alert on counter, tick per chat message. Hold title 2 s.
+NARRATION [concerned]: At seven forty-six on a Tuesday morning, a customer reported that they couldn't get into their Atlassian site. Eight minutes earlier, a maintenance job had started. It was supposed to remove an old app. The job was still running when the ticket came in.
 
-At seven forty-six in the morning, a customer opened a support ticket. Their entire site was gone. Not one project. Not one board. The site. The place their company kept its work.
+> **Shot `desk`.** The mug stops halfway to Arjun's mouth. In the reverse shot, Sam's cursor pauses above the usual support instructions.
 
-Eight minutes earlier, a maintenance script had started its second batch. The first batch went exactly as planned. Same script. Same green checks. But the second list did not point at apps. It pointed at the sites themselves.
+SAM [concerned]: Their whole team uses that address. What do I tell them to open instead?
 
-Eight hundred and eighty-three sites. Deleted in twenty-three minutes. Seven hundred and seventy-five customers.
+> **Hold 700 ms.**
 
-And the monitoring said nothing. Because deleting a site was a normal workflow. No alarm fired. No dashboard turned red. The system reported a routine job, running normally.
+ARJUN [uneasy]: I can tell you what we were trying to remove. I need to check what we actually touched.
 
-Some of those customers would wait fourteen days to get their work back. This is how a routine cleanup became a fourteen-day recovery. And the one check that would have stopped it.
+> **Shot `clock`.** Cut to the clock and three impact numbers, one at a time. Return to Arjun's desk before the title. Leave the input list hidden.
 
-> Title card: "The cleanup script that deleted 883 sites" · "23 minutes to delete ·
-> 14 days to restore". Green "batch 01 ✓" chip flips to red "batch 02 ✗".
+NARRATION [grave]: By eight oh one, the script had deleted eight hundred and eighty-three cloud sites. Seven hundred and seventy-five customers were affected. For some of them, getting back in took up to fourteen days. The first production batch had worked. To see what changed, we need to see what that first batch actually proved.
 
-## Beat 2 · The home and the app (~1:48)
+## Beat 2 · The job on paper
 
-> Scene: line-art analogy interlude (pouria grammar): a box = customer site, a card
-> inside = Insight app. Pull the card out; the box stays. Then product-faithful
-> site card with Jira/Confluence/users/attachments chips. Warm paper palette for
-> the interlude only; night palette returns for the interface reveal.
+> **Shot `office`.** Establish Arjun in a wide shot. On the monitor, show the small maintenance task. Cut on his hand reaching for his coffee, then introduce Maya on the reverse.
 
-Start with what a cloud site is. Think of it as a home for a customer's Atlassian products. Jira lives there. Confluence lives there. Users, permissions, files, settings — all tied to that one address.
+ARJUN [dry]: My favorite kind of maintenance ticket is the one I can finish before my coffee gets cold. This one even had an existing script.
 
-For the customer, that home is not abstract. It is every ticket their support team ever answered. Every decision their engineers wrote down. Every file somebody attached at two in the morning. It is the company's memory, at one URL. And for some of those customers, there was no second copy. The site was the archive.
+NARRATION [neutral]: Atlassian had brought the functionality of a standalone app called Insight into Jira Service Management. The old standalone installations still needed to be removed. If you're cleaning up one of those installations, you'd expect the rest of the customer's work to be there when you finish.
 
-Now picture one app inside that home. It was called Insight. Atlassian was retiring an older version of it. The job was simple to say: take the old app out, leave the home standing.
+MAYA [focused]: Show me what we're removing. Start with what the customer sees.
 
-On screen: a box, and a card inside the box. Pull the card out. The box stays. That was the whole plan.
+> **Shot `site-map`.** Show a Jira-style demo site. Lift a small Insight tile out of its parent site card. Leave the cloud address, work items, and other product tiles visible. Focus the parent outline briefly.
 
-The maintenance script called a deletion interface to do it. And here is the detail the entire incident turns on. That interface accepted two kinds of identifier. Give it an app ID, it removes one app. Give it a site ID, it removes the home.
+NARRATION [neutral]: Picture the address your team opens to get to its work. That address takes you to a cloud site. You might get to Jira there, or Confluence, depending on what the team uses. Insight was an app installed for some of those customers. Take the old app away and the site should still open. In a change ticket, that sounds obvious. Once you're looking at a list of identifiers, you need a way to verify which object each identifier belongs to.
 
-Both inputs were valid. Both returned success. The tool had no opinion about which one you meant. Same endpoint. Same call. Same green response. Only the identifier decided how much disappeared.
+MAYA [dry]: I'll sign off on the little box. Leave my giant box where it is.
 
-The plan depended on the list pointing at the right kind of object. Nothing in the tool enforced that. It was a promise made in a spreadsheet, kept by humans. And spreadsheets do not fail loudly.
+> **Hold 550 ms.**
 
-> Prop planted: two ID chips, identical shape, one labelled APP, one SITE — labels
-> fade out, leaving two opaque values. Callback in beat 4 and beat 8.
+NARRATION [neutral]: That was the job as everybody understood it. The interesting part is what the checks had actually looked at.
 
-## Beat 3 · Three green checks (~1:42)
 
-> Scene: product-faithful review thread (approve stamps), staging run console,
-> batch-01 success panel. Three checks light green one at a time, word-synced.
-> Clock chip: APR 5 · 07:31 UTC. Each check's "narrow question" appears as a
-> mono caption under it; the dangerous question appears last, in amber, unanswered.
+## Beat 3 · Thirty out of thirty
 
-Now, the part that makes this worth studying. Because this script was not reckless. It was reviewed.
+> **Shot `review`.** Show an illustrative code review focused on the call and how the script invokes it. Cut to staging. In the reconstructed checklist, distinguish `Call checked` from `Production targets checked`.
 
-The peer review looked at the endpoint and how the script called it. The code was correct. The reviewers did not check what the production identifiers would resolve to. That question was not on the checklist. And honestly, reviews are built to catch wrong code, not wrong data. The code was the part everyone knew how to check.
+NARRATION [neutral]: The script went through peer review. The reviewers looked at the endpoint and how it was called. The script was also tested in staging. Staging didn't contain the production identifiers, so it couldn't tell the team which objects those identifiers would pick. It was still a sensible place to test the script. It left a separate question for somebody to answer before production.
 
-Then staging. The script ran there and behaved. But the production identifiers did not exist in staging. So staging could not tell anyone what those exact values would select in production. It tested the tool. It could not test the list.
+> **Shot `first-batch`.** Show the first batch completing. The app tile disappears from each illustrative site card. Leave the parent cards intact. Arjun lifts the mug. Switch to a retrospective screen share when Maya asks about the next list. Hold Maya's expression after Arjun's answer.
 
-Then the first real batch. Thirty sites. The old app came out. Every site stayed up. That success is the most dangerous check of the three. It proves the last list was right. It says nothing about the next one.
+ARJUN [relieved]: First batch. Thirty sites. The old app is gone and the sites are still there. I think I can finish this while the coffee's still technically a liquid.
 
-Look at the three green checks an engineer sees that morning. Review complete. Staging tested. First batch successful.
+MAYA [focused]: Where did the next list come from?
 
-Each check is real. Each one answers a narrower question than the team needed answered. Review asked: is the code right? Staging asked: does the tool work? Batch one asked: did the last list behave?
+ARJUN [uneasy]: A handoff. The first list was collected earlier.
 
-Nobody asked the question that mattered: what does each identifier in the next list actually select?
+VIK [focused]: Then what have we checked about this list?
 
-Three green checks. Zero answers to the dangerous question. And the second batch was already queued.
+> **Hold 850 ms.**
 
-> SFX: soft tick per check. The amber question stays on screen 1.5 s in silence.
+NARRATION [neutral]: The thirty were real evidence. The process had removed the right app on those sites. The second batch was a separate set of production inputs. The review hadn't independently checked that each value in that set represented the thing the team intended to remove.
 
-## Beat 4 · The second list (~1:35)
+> **Shot `clock`.** Cut from the green first-batch summary to April 5, 07:38 UTC. Keep the second list out of focus until the screen share.
 
-> Scene: two columns of opaque IDs side by side, no labels. Resolve-one-input
-> animation twice: app path (card leaves box, green OK) then site path (whole box
-> collapses, green OK). Terminal rows scroll; every row returns OK. Clock 07:38→07:44.
-> The green OK is the ironic prop: keep it green while the scope turns red.
+NARRATION [grave]: On April fifth, the next run began at seven thirty-eight. Let's look at what that list meant to the deletion service.
 
-According to Atlassian, a miscommunication put site identifiers into the list where app identifiers were intended.
+## Beat 4 · The other thing the service could delete
 
-Put the two lists side by side. Two columns of opaque values. No label says "this one is a home." A reviewer staring at a single ID has no obvious clue about the size of the thing it points at. The scope only exists after you resolve it against the system's records. Watch the labels fade. This is what the operator actually sees: values, not objects.
+> **Shot `screen-share`.** Give Maya the large tile, with Arjun and Vik visible at the side. As Maya asks her question, shift to an over-the-shoulder view of the terminal. The review conversation is dramatized after the run. The terminal shows a simulated lookup, with no executable deletion command.
 
-So follow one input through.
+MAYA [focused]: Pull up one value from the second list. What does it resolve to?
 
-First run: the input resolves to the Insight app. The app disappears. The site remains. Green OK.
+ARJUN [uneasy]: One second.
 
-Second run: the input resolves to the customer site. The same interface acts on the larger object. The site disappears. And the script moves to the next row. Green OK. Nothing in the log separates those two rows. Same status, same shape, same silence.
+> **Hold 650 ms.**
 
-That is why a successful return can lie to you. "OK" means the tool did exactly what it understood. It does not mean the tool understood what you meant.
+> **Shot `target-lookup`.** Fill the frame with `Resolved target   CLOUD SITE`. Hold before cutting to Arjun. Pull out to compare the nested app tile with its parent. Mark the simulated target lookup as a reconstruction.
 
-At seven thirty-eight the batch starts. Rows resolve. Rows delete. Every row returns OK. The console looks healthy while it eats eight hundred and eighty-three homes. Twenty-three minutes from first row to last.
+ARJUN [shocked]: That's the whole site.
 
-A production check has to compare the result against the intent. Not against the return code.
+MAYA [focused]: And the same service knows how to delete that too?
 
-## Beat 5 · First clues (~1:41)
+ARJUN [grave]: Yes. An app identifier meant remove the app. A site identifier meant remove the site. Both were valid inputs to the same deletion interface. The second list came from a handoff between teams and contained the cloud site identifiers. There was no warning to make the caller confirm which kind of deletion it was asking for. The service did exactly what it had been asked to do.
 
-> Scene: #incident chat (BugX grammar, wojak avatars) escalating 07:46→08:17;
-> monitoring dashboard flat green beside it (the irony); support-form UI with
-> required "Site URL *" field and a blinking cursor with nothing to type.
-> Dramatized call: phone prop, two voice lines, on-screen label DRAMATIZED.
+> **Shot `clock`.** Replay 07:38, 07:46, 08:01, 08:17, and 08:53 as each event is spoken. Show the site outline dropping away on the first destructive operation. Use a quiet room tone when Arjun sees what it meant.
 
-The first clue did not come from a dashboard. It came from a customer.
+NARRATION [grave]: The script went through the list one site at a time. The support ticket came in at seven forty-six, while the job was still going. The run ended at eight oh one. Monitoring hadn't caught the deletion as an outage because it went through a standard workflow. Atlassian started its major incident process at eight seventeen. At eight fifty-three, responders confirmed the ticket and the script were connected.
 
-Seven forty-six. The job is still running. A ticket lands: our entire site is gone. Then another. Then the pattern nobody wants to see: it is not just one customer.
+ELLIS [focused]: I've got the timeline for the run. We can use that to check which sites we need to recover.
 
-Atlassian's internal monitoring missed it, because the sites went away through a standard workflow. The platform had a normal path for removing a site. That morning, hundreds of sites walked down it for the wrong reason. Nothing looked abnormal. Everything was abnormal.
+VIK [focused]: Get me the affected list. Sam, stay with the customers. Maya, find out what getting one site back actually takes.
 
-Eight seventeen: the major incident process begins. Eight fifty-three: the team connects the support report to the maintenance script. Eight minutes from batch start to first ticket. Thirty-nine minutes to a declared major incident.
 
-And then a cruelty worth sitting with. The deleted records included some of the information used to contact the people affected. And the normal support form asked for a valid cloud URL for your site.
+## Beat 5 · The people waiting outside
 
-Read that again. The front door to support expected the very thing you were trying to report missing.
+> **Shot `support-form`.** Use a recognizable cloud support layout with one field in focus. On the fictional example, a missing site cannot pass the cloud URL check. Cut to Sam's face before returning to the form.
 
-> On screen: form field "Site URL *" · cursor blinks · customer has nothing to type.
+SAM [concerned]: The form wants a valid site address. That's the address they're calling us about. Can we get their case to someone without sending them back through this page?
 
-[DRAMATIZED SUPPORT CALL]
-CUSTOMER (maya): I can't file the form. It wants our site URL. Our site is what's missing.
-SUPPORT (arjun): I know. Stay on the line. We'll find you another way in.
+VIK [focused]: Take the details you have. I need a way to track who's waiting and who owns the next update.
 
-Every workaround was manual. Every conversation cost time the recovery did not have. So the recovery team had two jobs at once. Bring the sites back. And rebuild a way to reach the people who owned them.
+NARRATION [neutral]: Some affected customers couldn't create a new ticket through the usual route because it expected a valid cloud URL. Atlassian also reported losing access to some customer contact information. To the customer, both problems looked the same. Their work was gone, and they couldn't tell whether anyone knew their team was affected.
 
-## Beat 6 · Seventy steps (~1:48)
+> **Shot `incident-call`.** Let the call breathe. Vik stops typing and looks at Sam before replying. Keep Maya's restore notes visible at the side.
 
-> Scene: site anatomy exploded view (catalogue record, identity, users/groups,
-> product DBs, attachments, billing/support, third-party apps) as connected cards;
-> new-site route draws dangling references that must be remapped one by one.
-> 70-step checklist montage, steps tick slowly; day-counter clock APR 5→APR 8;
-> arjun fatigue holds (mug gesture, monitor glow dimming). Paper palette for the
-> checklist only, like a runbook on a desk.
+SAM [strained]: I've got an account asking if they should tell their whole team to take the day off. What can I actually tell them?
 
-Here is what "restore a site" actually means.
+VIK [steady]: Tell them we know the site's affected. Tell them when we'll check in again. I'll give you a recovery time when the team can stand behind one.
 
-A site is not one row. It is a catalogue record that says the site exists. Identity settings. Users and groups. Product databases. File attachments. Billing and support systems. And apps made by other companies that still point at the same site.
+SAM [steady]: Okay. I can call with that.
 
-Many of those connections hang off a stable identifier. Change the identifier, and every reference has to be taught the new address.
+> **Hold 650 ms.**
 
-The first recovery route did exactly that. Make a new site for each deleted one. Restore product data and configuration into it. Then chase every old reference and remap it. Attachments back to the right site. Permissions back to the right users. External apps, again, by hand. And every remap is a chance to introduce a new mistake. Point an attachment at the wrong site, and you have built a second incident inside the first one.
+> **Shot `outreach`.** Show a reconstructed support case beside the account lead's draft. Sam removes a line from the email, then picks up the phone. Keep contact details out of frame.
 
-Atlassian describes this route as roughly seventy individual steps. Some automatable. Many dependent on earlier steps finishing in the right order.
+SAM [focused]: I've got an older case for this company. I can check who they already talk to here. Once we verify the contact, I'll keep the updates together so they don't have to tell the story again on every call.
 
-The team split in two. One group proved the steps on a small set. The other turned proven steps into automation for batches. April fifth to April eighth: three days just to prove the route on a handful of sites.
+NARRATION [neutral]: Customer-facing teams rebuilt contact lists using records they could still access, including prior support tickets. They aimed to keep one incident-related ticket for each affected site. That gave the people doing outreach somewhere to follow the engineering progress and put the next update.
 
-April eighth: the first customers come back. Real progress. You can feel the relief in the room.
+NARRATION [neutral]: Engineers, support, program managers, and communications staff worked across shifts. The core response team met every three hours. Atlassian also had to give affected customers a better way to raise issues and get updates. A restore queue and a customer contact list are different jobs. The team had to connect them while both were changing.
 
-And then the math lands. If every site needs that much remapping, the remaining hundreds stretch into weeks. The route works. The route does not scale.
+## Beat 6 · One site back
 
-> Day counter holds on APR 8 with "sites remaining: hundreds" in amber. Beat of silence.
+> **Shot `site-board`.** Reconstruct the documented Jira SITE project. Zoom to one illustrative issue. Show the assigned owner, the restore route, the next action, and the validation status. Vik leaves the item open when the database step turns green.
 
-They needed a different starting point.
+VIK [focused]: Maya, where are we on the first site?
 
-## Beat 7 · Keep the identity (~1:34)
+MAYA [focused]: The product data's back in the new site. We're still checking who can get to it.
 
-> Scene: original site card returns with the SAME ID chip; dangling references
-> reconnect on their own, one by one, green. Side-by-side step counter: 70 → 34
-> ("more than half removed", source-labelled). Validation montage: support
-> engineers log in, open projects, open attachments. Clock APR 8→APR 18.
+ELLIS [focused]: I'll try it as a regular user. My admin account can get through things their accounts can't.
 
-The second route asked a quieter question. What if we rebuild the deleted records and keep the old identifiers?
+NARRATION [neutral]: Atlassian's existing recovery process made a new site to replace the deleted one. That gave the site a new identifier. Other systems had stored the old identifier in records that pointed back to the site. So the job included restoring data and reconnecting it to the right place. That could mean users and permissions, attachments, service data, and third-party apps.
 
-Bring back the original site card. Same ID it had before. Now every record that points at that ID can reconnect on its own once the related services and data are restored. No chasing. No remapping. The references were never wrong. The site was just missing. The identifier was the thread holding the whole system together. Cut it, and you re-sew every connection by hand. Keep it, and the system remembers how to assemble itself.
+> **Shot `remap`.** Use the same site diagram from Beat 2. Show an attachment link still pointing at the old site identity. Move the reference only when Maya explains it. Build a dependency chain alongside the diagram one step at a time.
 
-Atlassian says reusing identifiers removed more than half of the seventy steps.
+MAYA [focused]: Think of an attachment. You can have the file sitting in storage, and the issue sitting in Jira. If the reference still points at the old site, clicking it can fail. When I say the data's back, that's one box on the checklist.
 
-It was still serious engineering. Reconstruct records across services. Test the procedure. Run long operations in parallel where possible. Then check that each site actually works before handing it back — because a database being online is not the same as a customer being able to log in and see their projects.
+> **Shot `restore-clock`.** Line up the main data stores on a shared restore point. Show an issue and its attachment returning together as an illustrative example. Keep the timestamp relative to deletion.
 
-Support engineers helped test recovered sites and hand them to customers. A site was not done when its database answered. It was done when a customer logged in and found their work waiting.
+NARRATION [neutral]: There was a time problem as well as an identity problem. Different parts of a site had to be brought back to a consistent point. For most customers, Atlassian chose a point five minutes before the deletion for the main product databases. Other stores had to be brought in line with it or caught up using recorded events. If one piece is further ahead than another, you can end up with a page that remembers an attachment the file store hasn't recovered yet.
 
-April eighteenth: all affected sites progressively restored.
+NARRATION [neutral]: The first approach was roughly seventy individual steps, many of them dependent on the step before. One group worked through the early restorations manually and checked the sequence. Another built automation to run more of that process safely. The first customers got their sites back on April eighth.
 
-The recovery turned on a design detail most customers never see. Keeping a site's identity meant less work putting the system back together. Identity was the recovery plan.
+> **Shot `site-board`.** A fictional issue passes validation. Cut to Arjun relaxing his shoulders. Keep the rest of the board open in the background.
 
-> Prop callback: the site card from beat 2 returns, unchanged, ID intact.
+SAM [relieved]: They've signed in. I'm going to wait while they open the thing they actually came back to work on.
 
-## Beat 8 · The check I would add (~2:09)
+> **Hold 650 ms.**
 
-> Scene: proposed preview UI (labelled PROPOSED DESIGN): rows of ID · resolved
-> type · effect; summary line "883 sites selected" in red; job halts before any
-> change. Then type-check rejection row, small-batch gate, between-batch reach
-> check, soft-delete tray. End on terminal: green "OK" chip alone on black.
+NARRATION [grave]: Getting that first group back mattered. The same approach still meant spending a great deal of time rebuilding relationships around every new site. So the next question was whether the team could keep those relationships in place.
 
-Now put yourself back just before the second batch. And imagine one more screen.
 
-A preview. Every row shows the identifier, the type of object it resolves to, and the effect of the operation. The summary line reads: eight hundred and eighty-three sites selected.
+## Beat 7 · Give the site its old identity back
 
-The operator expected apps. The job stops before it changes anything. One screen, thirty seconds, zero deleted homes. No heroics. No recovery. Just a question asked before the damage, instead of after.
+> **Shot `restore-paths`.** Put the old and new paths side by side. On the old path, leave the remapping nodes visible. On the accelerated path, reconnect the original identifier and let several lanes move in parallel. Keep validation as a separate final step.
 
-That is a proposed design, drawn from the incident. The platform could enforce the same rule inside the interface. A job whose intent is to retire apps gets permission to retire apps. If a row resolves to a site, reject the row. Hard limits. Small batches. A check between batches that each site is still present and reachable.
+MAYA [focused]: We keep having to teach every system the new name. What happens if the site comes back under the old one?
 
-Then add a way back. Atlassian committed to wider soft deletion — records first move into a recoverable state — and to practicing multi-site recovery at scale.
+ARJUN [curious]: Then that attachment still knows which site it's supposed to belong to.
 
-Each control catches a different failure. Preview catches wrong intent. Type checks catch wrong targets. Recovery practice tests what happens when prevention fails anyway.
+MAYA [steady]: Right. We still have to put the attachment and the rest of the data back. But we're removing a whole class of work.
 
-So here is the check I would add to your next maintenance job. Before it runs: show me the exact production objects this job will change. Can you tell me whether that list matches the plan? Ask it every time the input changes — even when the code and the last run looked fine.
+NARRATION [neutral]: On April ninth, Atlassian proposed a second approach. Recreate the records for the site and reuse its original identifiers. That avoided much of the remapping and let more teams restore their pieces at the same time. The new process still had over thirty steps. And before it could handle larger batches, it had to be tested and validated in its own right.
 
-And ask the second question: if we have to undo this across the whole batch, who runs that recovery, and when did we last prove it works?
+> **Shot `site-board`.** Two labeled recovery routes on the same Jira SITE reconstruction. Vik points to the existing lane, then selects a small batch on the new one.
 
-The first batch used the right list. The second batch used a different one. The clue was there before the run, in what the identifiers referred to.
+VIK [focused]: Keep the restores already in progress moving. Give me a small batch on the new route. I want to see what passes before we ask it to take more.
 
-The tool said OK. It always says OK. That was never the question.
+ELLIS [steady]: I'll run the same user and attachment checks on the new route. We'll know if it gets people back to the same place.
 
-> Final frame: green "OK" chip on black, 2 s, then cut. End card: source link +
-> "the check worth putting in the tool" + subscribe prop (the ✓ chip, now amber).
+NARRATION [neutral]: Teams ran both approaches in parallel. They adapted automation, tested the second route, and checked that sites actually worked. A site that existed again still needed the right users, access, products, and data before the customer could return to it.
 
----
+> **Shot `handoff`.** Hold on an issue with three readable fields: route, last verified step, and next owner. Match cut from the outgoing engineer's note to the incoming engineer opening the same issue.
 
-## Runtime estimate
+VIK [steady]: Before you hand this over, put the route and the last check on the issue. The next person needs to know where to pick up and what they can trust.
 
-| Beat | Spoken words | Est. screen time |
-|------|-------------|------------------|
-| 1 cold open | 144 | 1:05 |
-| 2 home & app | 259 | 1:48 |
-| 3 green checks | 241 | 1:42 |
-| 4 second list | 226 | 1:35 |
-| 5 first clues | 237 | 1:41 |
-| 6 seventy steps | 258 | 1:48 |
-| 7 keep identity | 226 | 1:34 |
-| 8 the check | 306 | 2:09 |
-| **Total** | **1,897** | **~13:26** |
+NARRATION [neutral]: That's where the tracking mattered. With two processes running and people changing shifts, an update like “restore running” could mean very different things. The team needed to see which sites were still being worked on, which were being checked, and which had been returned to customers.
 
-Speech at ~2.45 words/s (sonic-3.6, speed 0.92) plus inter-beat pauses and the
-marked silent holds (~32 s total). Word counts are VO-only, measured from the
-verbatim text above (headers/notes excluded); they match
-`narration/segments.json` exactly. Final timings will be measured from the
-synthesized master. Lands inside the 12–15 min target; if a render runs long,
-trim beat 6's anatomy list first.
+> **Shot `public-update`.** Dramatized cut to Daniel asking for the update while Sam checks customer communications. Then show the date and a source card for the documented April 12 public statement. Use original screen copy.
 
-## YouTube chapters (approximate)
+DANIEL [steady]: What do we know about the sites still waiting?
 
-0:00 The ticket at 7:46 · 1:05 The home and the app · 2:54 Three green checks ·
-4:37 The second list · 6:12 First clues · 7:53 Seventy steps · 9:42 Keep the
-identity · 11:17 The check I would add
+SAM [concerned]: Some are further along. I can't tell every customer they'll be back tomorrow.
 
-## Title / thumbnail
+DANIEL [grave]: Then say how far we've got and how long the remaining work could take. People are planning around this.
 
-- Title: "The Cleanup Script That Deleted 883 Sites" (alt: "883 Sites Deleted in
-  23 Minutes — The Green Checks Lied").
-- Thumbnail: arjun shock close-up left, red 883 counter right, terminal prop with
-  green "OK" between them; night palette, warm monitor glow, grain. Same family
-  as `qwen/audit-2026-11-11/thumbs/`.
+NARRATION [grave]: On April twelfth, Atlassian's CTO published an update explaining the incident and warning that recovery for some customers could take up to two weeks. By April eighteenth, all sites had been restored. For people who had been waiting since the start, that was almost two weeks of finding another way to work.
 
-## Next production steps
+## Beat 8 · Ask the system what it is about to touch
 
-1. Split beats into `narration/segments.json` (per-beat ids, speaker/shot/expression
-   tags like `host/narration/segments.json`), synthesize with `studio/tools/tts.mjs`.
-2. Build scenes per beat on the incident design system; reuse ColdOpen scenes for
-   beat 1; new scene types: analogy interlude, review/staging UI, exploded site
-   anatomy, checklist montage, preview UI.
-3. Render, verify by mp4 frame extraction (not `remotion still`), captions via
-   `toSrt(clock, …)`, chapters above.
+> **Shot `preview`.** Replay the input into a clearly marked proposed safety preview. Show `Expected type: APP`, then `Resolved type: CLOUD SITE`. Let the cursor reach the action before it switches to `Blocked`. Use the same lookup layout and parent-site silhouette as Beat 4.
+
+NARRATION [neutral]: Let's replay one row from the second batch with a different rule. Tell the job in advance that every target must be an app. Resolve the identifiers in production without changing anything. If even one points to a cloud site, stop the batch and show the mismatch before the job can send a delete.
+
+MAYA [dry]: That's the preview I'd want on the review.
+
+NARRATION [neutral]: That screen is an example of a guardrail. Atlassian reported blocking bulk site deletion and described plans for safer deletion and testing recovery across multiple sites. Those controls address two different moments. One puts a barrier in front of the mistake. The other gives the team a way back when something still goes wrong.
+
+> **Shot `desk`.** Return to the original desk framing. Arjun sips the coffee, winces, and sets it down. End on the two resolved target types and the incident source.
+
+ARJUN [dry]: The coffee's cold. Fair enough.
+
+> **Hold 750 ms.**
+
+NARRATION [steady]: If you own a job that can make a permanent change, ask to see one real target resolved before you approve the run. Then ask how the job proves the rest of the list is the same kind of target. That's a check a reviewer can actually run.

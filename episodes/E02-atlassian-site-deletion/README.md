@@ -1,10 +1,10 @@
 # E02 · The Cleanup Script That Deleted 883 Atlassian Sites
 
-**Incident:** Atlassian Cloud, April 2022. **First release:** 9:16 Short. **Second release:** 16:9 incident breakdown, approximately 10:05–11:05 before editing, based on 1,660 spoken words and 150–165 words per minute. **Audience:** developers who have shipped changes to production and viewers who want to understand why a routine job went wrong. **Tone:** calm investigation with a clear recovery and practical lesson.
+**Incident:** Atlassian Cloud, April 2022. **First release:** 9:16 Short. **Second release:** 16:9 character-led incident breakdown, approximately 13–14 minutes. **Audience:** developers who have shipped changes to production and viewers who want to understand why a routine job went wrong.
 
 **Story question:** Why did a reviewed script pass staging and its first production batch, then delete hundreds of sites? The first list contained app IDs. The second contained site IDs. The same deletion interface handled both, and the pipeline did not validate the target type for that batch.
 
-The person who ran the job is not identified by seniority in Atlassian’s review. Use an unnamed, illustrated operator to represent the role. The scene is a reconstruction. Use the real April 5 UTC timeline and omit invented quotes, personal blame, and claims of a midnight page.
+The Short uses an unnamed operator. The long-form script uses a fictional ensemble and original dialogue, with the dramatization identified on screen. Atlassian’s review does not identify the operator by seniority.
 
 ## Source ledger
 
@@ -22,7 +22,7 @@ All incident figures and reported actions come from the [Atlassian incident revi
 
 ## Short master
 
-The [spoken segments](narration/segments.json) match the generated Cartesia take. The master is about 49.6 seconds. [Word timings](transcript/words.json) drive the cuts. Recheck times after replacing the voice.
+The [Short voiceover](short-voiceover.txt) and [word timings](transcript/words.json) correspond to the approximately 49.6-second master. The JSON at `narration/segments.json` is a prior long-form draft. Use the new manifest under `longform/narration/` for this production.
 
 | Approx. time | What to animate | Edit and sound direction |
 |---|---|---|
@@ -39,34 +39,13 @@ Two follow-on Shorts from the same research and assets could answer **Why did th
 
 ## Long-form edit
 
-[Full narration draft](script.md). These are chapter planning ranges. Time the final edit from the approved audio. Build the explanatory sequences in 16:9 with the same components as the Short, then adapt where wide layouts need a separate camera and typography setup.
+[Full transcript](full-transcript.md) · [Production plan and audition commands](production-plan.md) · [Long-form narration manifest](longform/narration/segments.json)
 
-| Approx. time | Story beat | Screen and motion |
-|---|---|---|
-| 0:00–0:55 | First batch succeeds, next batch deletes sites | Illustrated operator, green checks, then hard cut to the two counts and the incident date. Hold the question before the first diagram. |
-| 0:55–1:55 | What was supposed to be deleted | Wide site card with products and data attached. Lift out only the Insight tile, leaving the surrounding site intact. |
-| 1:55–3:00 | Review, staging, first 30 | Three checks appear one at a time. At each green check, annotate what it actually verified. |
-| 3:00–4:05 | The second list points to sites | Duplicate the same two-column layout. Animate one identifier in each lane. Pull out the app in one lane and remove the whole site in the other. |
-| 4:05–5:15 | Detection and support problem | Reveal timeline ticks at 07:38, 07:46, 08:01, 08:17 and 08:53 UTC. Show a simplified support form asking for the missing site URL. |
-| 5:15–6:20 | What a site depends on | Fan out catalogue, identity, product data, media and integrations. Zoom only as a new dependency matters. |
-| 6:20–7:25 | First restore route | Replace the original site with a new ID. Draw dependencies one by one and show remapping accumulating. Label the April 8 milestone. |
-| 7:25–8:35 | Second restore route | Reuse the original ID. Animate multiple restore lanes in parallel. Reveal validation before a green return-to-customer state. |
-| 8:35–9:45 | A check that catches wrong targets | Replay the second input list into an illustrative preview. Resolve target types, show mismatch, stop the batch. Add a soft-delete and recovery exercise card. |
-| 9:45–end | Apply the lesson to the next maintenance job | Bring back the two input lists. End with a single readable on-screen question about what the job will touch. |
-
-### Motion and production decisions
-
-- Use an illustrated person to establish the operator’s point of view. Move to a dashboard, request path, timeline, or evidence panel whenever the narration describes what the system did. Draw characters, staging and icons in the production art style.
-- Use teal for the expected outcome, amber for a decision or uncertain state, and coral for damage. Add words and symbols to show state on a grayscale display.
-- Reveal one row at a time on the line that introduces it. Use restrained camera moves, cuts on changes in viewpoint, and a brief hold at the root cause. Use an options panel when the narration narrows a list. Keep the backdrop quiet.
-- Use exact readable vector text for identifiers, dates, figures and labels. Show concrete state transitions in the architecture. Reserve atmospheric art for moments where it supports the story.
-- Prepare a reusable set of operator, monitor, terminal, event timeline, nested site card, dependency diagram and decision checklist components. Capture stills around each reveal and review captions and contrasts at phone size.
-- First export is a private prototype. Confirm the narrator sounds comfortable over a full 60–90 seconds, then build the first long-form chapter with sound design. Measure the time to make that chapter before committing to the remaining chapters.
-- Check the title and captions against the ledger before release. Use an export with licensed narration, readable subtitle placement, original art and any licensed sound effects. Publish the Short first and use viewer feedback on the root-cause reveal to guide the longer edit.
+The opening starts with a customer unable to access their site. The second list's target is revealed in Beat 4. The [58-second landscape opening](production-plan.md#opening-preview) is available as `E02LongformOpening` in Remotion Studio. The next production test is the separate recovery scene.
 
 ## Narration and build
 
-I auditioned Cartesia Sonic 3.6 with Clive (measured), Lauren (more expressive) and Quentin (refined). The [scorecard](audition/scorecard.json) records a machine pronunciation screen. Use the WAVs to judge natural delivery. Clive is the provisional voice for the preview. Keep one speaker throughout, read in a calm incident-review tone, and use short pauses around changes in scope.
+The Short auditioned Cartesia Sonic 3.6 with Clive, Lauren and Quentin. The [scorecard](audition/scorecard.json) records a machine pronunciation screen. The generated Short uses Clive. The long-form plan has its own cast auditions.
 
 Cartesia’s Free tier is for the private preview. Its [pricing](https://www.cartesia.ai/pricing) lists commercial use on Pro, and its [terms](https://www.cartesia.ai/legal/terms) restrict commercial use without a qualifying tier. Regenerate under commercial terms for client work or monetized use. Verify the tier at checkout. The repo reads the credential from its local ignored configuration or the process environment.
 
@@ -74,8 +53,7 @@ From the repository root after installing workspace dependencies:
 
 ```powershell
 node studio/tools/audition.mjs --episode episodes/E02-atlassian-site-deletion --excerpt audition/excerpt.json
-node studio/tools/tts.mjs --episode episodes/E02-atlassian-site-deletion --voice b24f41fd-00a3-4cd8-992a-a0c9f13f3ef1
 node studio/tools/build.mjs --episode episodes/E02-atlassian-site-deletion
 ```
 
-The audition utility reuses WAVs by voice name. Move earlier takes aside before auditioning a different excerpt. Update the on-screen triggers and recheck cuts whenever the approved wording changes. The Short’s narration is generated. The 10+ minute narration and render remain in preproduction.
+The audition utility reuses WAVs by voice name. Move earlier takes aside before auditioning a different excerpt. The build command uses the existing Short master. The full episode's audio and video are pending.

@@ -3,9 +3,19 @@ import {Composition} from "remotion";
 import {Short, clock} from "./Short";
 import {HostOpening, hostClock} from "./HostOpening";
 import {ColdOpen, coldClock, coldTotalFrames} from "./ColdOpen";
+import {LongformOpening, openingClock} from "./LongformOpening";
 
 export const Root = () => (
   <>
+    <Composition
+      id="E02LongformOpening"
+      component={LongformOpening}
+      defaultProps={{captions: true}}
+      width={1920}
+      height={1080}
+      fps={openingClock.fps}
+      durationInFrames={openingClock.totalFrames}
+    />
     <Composition
       id="E02HostOpening"
       component={HostOpening}

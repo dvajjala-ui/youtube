@@ -1,6 +1,6 @@
 import React, { useId } from "react";
 
-export type CharacterProfile = "maya" | "arjun";
+export type CharacterProfile = "maya" | "arjun" | "sam";
 export type CharacterExpression = "smile" | "skeptical" | "shock" | "thinking" | "neutral";
 export type CharacterMouth = "closed" | "small" | "open" | "wide";
 export type CharacterGesture = "rest" | "mug" | "point";
@@ -11,6 +11,7 @@ export interface IncidentCharacterProps {
   mouth: CharacterMouth;
   blink?: boolean;
   gesture?: CharacterGesture;
+  mugLift?: number;
   style?: React.CSSProperties;
 }
 
@@ -30,6 +31,14 @@ const profiles = {
     seam: "#7dc1a7",
     outline: "#172b38",
     shirt: "#f1e0b9",
+  },
+  sam: {
+    skin: ["#ddad92", "#af715e", "#824b3f"],
+    hair: ["#785446", "#3f2829"],
+    jacket: ["#b76843", "#753d33"],
+    seam: "#e89a70",
+    outline: "#302227",
+    shirt: "#f1d7b9",
   },
 };
 
@@ -140,6 +149,14 @@ function Mouth({ expression, mouth, ink }: {
 }
 
 function Hair({ profile, fill, ink }: { profile: CharacterProfile; fill: string; ink: string }) {
+  if (profile === "sam") {
+    return (
+      <g>
+        <path d="M148 207q-14-28-12-53q-18-44 7-67q27-27 67-17q29-33 82-22q54 11 57 57q12 29-16 95l-14-31q3-31-14-48q-35 24-90 17q-22-3-41-15q-15 18-17 70Z" fill={fill} stroke={ink} strokeWidth="5" strokeLinejoin="round" />
+        <path d="M152 105q29-21 65-12q42 9 88-18m-138 41q25-11 52-4q46 9 80-11" fill="none" stroke="#b18473" strokeWidth="3" strokeLinecap="round" opacity=".74" />
+      </g>
+    );
+  }
   return profile === "maya" ? (
     <g>
       <path d="M144 214Q126 174 139 121Q142 91 165 70Q192 43 231 55Q268 36 305 62Q351 82 352 127Q356 175 332 222L317 199Q325 150 302 126Q278 148 247 150Q215 150 198 165Q183 154 187 134Q160 155 160 192L157 217Z" fill={fill} stroke={ink} strokeWidth="5" strokeLinejoin="round" />
@@ -156,8 +173,9 @@ function Hair({ profile, fill, ink }: { profile: CharacterProfile; fill: string;
   );
 }
 
-function HandGesture({ gesture, skin, jacket, seam, ink }: {
+function HandGesture({ gesture, mugLift, skin, jacket, seam, ink }: {
   gesture: CharacterGesture;
+  mugLift: number;
   skin: string;
   jacket: string;
   seam: string;
@@ -168,7 +186,7 @@ function HandGesture({ gesture, skin, jacket, seam, ink }: {
   }
   if (gesture === "mug") {
     return (
-      <g>
+      <g transform={`translate(0 ${(1 - mugLift) * 54}) rotate(${(mugLift - 1) * 12} 400 498)`}>
         <path d="M389 498q-20-45-12-68l13-37q11-20 33-10q17 8 14 31l-4 84Z" fill={jacket} stroke={ink} strokeWidth="5" strokeLinejoin="round" />
         <path d="M388 425q21 3 42 13m-40-5q18 3 38 13" fill="none" stroke={seam} strokeWidth="2.5" opacity=".85" />
         <path d="M409 410q-15-5-20-15l-1-18q2-12 15-14q17-2 28 11q8 10 2 24l-7 17Z" fill={skin} stroke={ink} strokeWidth="4" />
@@ -200,6 +218,7 @@ export function IncidentCharacter({
   mouth,
   blink = false,
   gesture = "rest",
+  mugLift = 1,
   style,
 }: IncidentCharacterProps) {
   const reactId = useId().replace(/[^a-z0-9_-]/gi, "");
@@ -253,9 +272,9 @@ export function IncidentCharacter({
         </g>
       ) : (
         <g>
-          <path d="M173 344q7 32 40 52l-27 28l-47-58Zm138 0q-6 32-39 52l25 28l47-58Z" fill="#4c9f89" stroke={ink} strokeWidth="4" strokeLinejoin="round" />
+          <path d="M173 344q7 32 40 52l-27 28l-47-58Zm138 0q-6 32-39 52l25 28l47-58Z" fill={profile === "sam" ? colors.jacket[0] : "#4c9f89"} stroke={ink} strokeWidth="4" strokeLinejoin="round" />
           <path d="M234 398v102m17-100v100M87 412q18 7 26 32m270-31q-17 8-24 30" fill="none" stroke={colors.seam} strokeWidth="3" strokeLinecap="round" opacity=".82" />
-          <path d="M127 449h52l-6 39h-40Z" fill="#276c69" stroke={ink} strokeWidth="3" strokeLinejoin="round" />
+          <path d="M127 449h52l-6 39h-40Z" fill={profile === "sam" ? colors.jacket[1] : "#276c69"} stroke={ink} strokeWidth="3" strokeLinejoin="round" />
           <path d="M134 454h38" fill="none" stroke={colors.seam} strokeWidth="2.5" strokeLinecap="round" />
         </g>
       )}
@@ -266,6 +285,7 @@ export function IncidentCharacter({
       <ellipse cx="186" cy="228" rx="25" ry="16" fill={"url(#" + prefix + "-cheek)"} />
       <ellipse cx="296" cy="228" rx="25" ry="16" fill={"url(#" + prefix + "-cheek)"} />
       <Hair profile={profile} fill={hair} ink={ink} />
+      {profile === "sam" && <path d="M150 192q-13 10-10 38q4 23 34 30l25 2" fill="none" stroke={ink} strokeWidth="7" strokeLinecap="round" />}
       {profile === "maya" && (
         <g fill="none" stroke="#ffc879" strokeWidth="4">
           <path d="M147 228q-12 5-9 17q2 8 9 6q8-2 7-16m179-7q11 4 8 15q-2 8-9 7q-7-2-6-14" />
@@ -286,7 +306,7 @@ export function IncidentCharacter({
       )}
       <Mouth expression={expression} mouth={mouth} ink={ink} />
       <path d="M222 289q19 12 38 0" fill="none" stroke={colors.skin[0]} strokeWidth="3" strokeLinecap="round" opacity=".68" />
-      <HandGesture gesture={gesture} skin={skin} jacket={jacket} seam={colors.seam} ink={ink} />
+      <HandGesture gesture={gesture} mugLift={mugLift} skin={skin} jacket={jacket} seam={colors.seam} ink={ink} />
     </svg>
   );
 }

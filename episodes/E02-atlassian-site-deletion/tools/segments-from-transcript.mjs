@@ -1,129 +1,79 @@
 #!/usr/bin/env node
 /**
- * Build narration/segments.json for the full E02 episode from full-transcript.md.
- *
- * The transcript is the source of truth: verbatim VO lines become segments,
- * blockquote production notes and [TAG] lines are never spoken. Dramatized
- * CUSTOMER/SUPPORT lines become their own segments with the right voice.
- *
- * Run from the repo root:
- *   node episodes/E02-atlassian-site-deletion/tools/segments-from-transcript.mjs
- *
- * Then synthesize:
- *   node studio/tools/tts.mjs --episode episodes/E02-atlassian-site-deletion \
- *     --voice cc71692b-f326-499b-8f8f-90a415b4d3fb
+ * Build the long-form narration manifest from the production transcript.
+ * Run from the repo root. See production-plan.md for synthesis commands.
  */
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
-import { join, dirname } from "node:path";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const EP = join(dirname(fileURLToPath(import.meta.url)), "..");
-const ARJUN = "cc71692b-f326-499b-8f8f-90a415b4d3fb";
-const MAYA = "a33f7a4c-100f-41cf-a1fd-5822e8fc253f";
+const episode = join(dirname(fileURLToPath(import.meta.url)), "..");
+const cast = {
+  ARJUN: "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+  MAYA: "a33f7a4c-100f-41cf-a1fd-5822e8fc253f",
+  ELLIS: "5ee9feff-1265-424a-9d7f-8e4d431a12c7",
+  VIK: "382109c0-5c85-4fd1-9d94-b3ec07a4486b",
+  SAM: "5568a7df-e5ab-4442-9fae-2e9ba1b15ad8",
+  DANIEL: "b24f41fd-00a3-4cd8-992a-a0c9f13f3ef1",
+};
 
-const transcript = readFileSync(join(EP, "full-transcript.md"), "utf8");
+const transcript = readFileSync(join(episode, "full-transcript.md"), "utf8");
 const beats = transcript.split(/^## Beat /m).slice(1);
+if (beats.length !== 8) throw new Error("Expected eight script beats");
 
-// Shot hints per beat, indexed by paragraph order (scene-building aids only).
-const shots = {
-  1: ["phone", "terminal", "counter", "chat", "title"],
-  2: ["analogy", "analogy", "analogy", "analogy", "sitecard", "sitecard", "sitecard"],
-  3: ["review", "review", "staging", "batch", "checks", "checks", "checks", "checks"],
-  4: ["ids", "ids", "resolve", "resolve", "resolve", "resolve", "terminal", "terminal"],
-  5: ["chat", "chat", "dashboard", "chat", "form", "form", "call", "call", "chat"],
-  6: ["anatomy", "anatomy", "anatomy", "remap", "checklist", "checklist", "daycounter", "daycounter", "daycounter"],
-  7: ["identity", "identity", "steps", "validation", "validation", "daycounter", "identity"],
-  8: ["preview", "preview", "preview", "controls", "controls", "controls", "closer", "closer", "closer", "closer"],
-};
-// Marked silent holds / dialogue pacing (pauseMs after the segment).
-const pauseOverrides = {
-  "b1-05": 2000, // title card hold
-  "b3-08": 1500, // amber question, 1.5 s silence
-  "b5-06": 800, // form cursor blink before the call
-  "b5-07": 400, // CUSTOMER -> SUPPORT
-  "b5-08": 600, // call -> narration
-  "b6-08": 2000, // day counter hold, beat of silence
-  "b8-10": 2000, // final green OK frame
-};
-const expressionOverrides = {
-  "b1-03": "shock",
-  "b6-07": "smile",
-  "b7-06": "smile",
-};
-
-const segments = [];
-const perBeat = {};
-
-beats.forEach((beatText, bi) => {
-  const beat = bi + 1;
-  const body = beatText.split(/^## /m)[0];
-  // First line is the header remainder ("1 · Cold open …") — never spoken.
-  const lines = body.split("\n").slice(1);
-  let para = [];
-  let n = 0;
-
-  const flush = () => {
-    if (!para.length) return;
-    n += 1;
-    const id = `b${beat}-${String(n).padStart(2, "0")}`;
-    const text = para.join(" ");
-    para = [];
-    segments.push({
-      id,
-      speaker: "arjun",
-      expression: expressionOverrides[id] ?? "neutral",
-      gesture: "rest",
-      shot: shots[beat][n - 1] ?? "desk",
-      text,
-      pauseMs: pauseOverrides[id] ?? 400,
-    });
-  };
-
-  for (const raw of lines) {
-    const l = raw.trim();
-    if (!l || l.startsWith(">") || l.startsWith("[") || /^---+$/.test(l)) {
-      flush();
-      continue;
-    }
-    const dlg = l.match(/^(CUSTOMER|SUPPORT)\s*\((maya|arjun)\):\s*(.*)$/);
-    if (dlg) {
-      flush();
-      n += 1;
-      const id = `b${beat}-${String(n).padStart(2, "0")}`;
-      const who = dlg[1];
-      segments.push({
-        id,
-        speaker: dlg[2],
-        expression: who === "CUSTOMER" ? "shock" : "neutral",
-        gesture: "rest",
-        shot: "call",
-        dramatized: true,
-        text: dlg[3],
-        voice: who === "CUSTOMER" ? MAYA : ARJUN,
-        pauseMs: pauseOverrides[id] ?? 400,
-      });
-      continue;
-    }
-    para.push(l);
+const segments = beats.flatMap((body, index) => {
+  const beat = index + 1;
+  const [heading, ...lines] = body.split(/\r?\n/);
+  if (!heading.startsWith(`${beat} · `)) {
+    throw new Error(`Expected beat ${beat}, got ${heading}`);
   }
-  flush();
 
-  // Beat boundary: longer breath before the next beat (unless a hold overrides).
-  const last = segments[segments.length - 1];
-  if (!(last.id in pauseOverrides)) last.pauseMs = 800;
-  perBeat[beat] = n;
+  let shot;
+  const entries = [];
+  for (const raw of lines) {
+    const line = raw.trim();
+    if (!line) continue;
+
+    const shotCue = line.match(/^> \*\*Shot `([\w-]+)`\.\*\* /);
+    if (shotCue) {
+      shot = shotCue[1];
+      continue;
+    }
+    const hold = line.match(/^> \*\*Hold (\d+) ms\.\*\*$/);
+    if (hold) {
+      const last = entries.at(-1);
+      const pauseMs = Number(hold[1]);
+      if (!last || pauseMs > 3000) throw new Error(`Invalid hold in beat ${beat}`);
+      last.pauseMs = pauseMs;
+      continue;
+    }
+
+    const spoken = line.match(/^([A-Z]+) \[([a-z]+)\]: (.+)$/);
+    if (!spoken || !shot) throw new Error(`Invalid cue in beat ${beat}: ${line}`);
+    const [, role, expression, text] = spoken;
+    const dramatized = role !== "NARRATION";
+    const actor = dramatized ? role : "ARJUN";
+    if (!Object.hasOwn(cast, actor)) throw new Error(`Unknown actor ${actor}`);
+    entries.push({
+      id: `b${beat}-${String(entries.length + 1).padStart(2, "0")}`,
+      speaker: actor.toLowerCase(),
+      voice: cast[actor],
+      dramatized,
+      expression,
+      shot,
+      text,
+      pauseMs: 300,
+    });
+  }
+
+  const last = entries.at(-1);
+  if (!last) throw new Error(`No spoken lines in beat ${beat}`);
+  last.pauseMs = Math.max(last.pauseMs, 700);
+  return entries;
 });
 
-// Verify: spoken word count must match the measured transcript total (1,897 —
-// VO only; beat headers and rules are not spoken).
-const words = segments.reduce(
-  (acc, s) => acc + s.text.split(/\s+/).filter(Boolean).length,
-  0
-);
-const chars = segments.reduce((acc, s) => acc + s.text.length, 0);
-
 const manifest = {
-  title: "E02 — The cleanup script that deleted 883 sites (full episode)",
+  title: "E02 — The Cleanup Script That Deleted 883 Sites",
   incident: "Atlassian cloud outage, 5 April 2022",
   format: "long_form",
   fps: 30,
@@ -131,17 +81,10 @@ const manifest = {
   speed: 0.92,
   segments,
 };
+const directory = join(episode, "longform", "narration");
+mkdirSync(directory, { recursive: true });
+writeFileSync(join(directory, "segments.json"), JSON.stringify(manifest, null, 2) + "\n");
 
-mkdirSync(join(EP, "narration"), { recursive: true });
-writeFileSync(
-  join(EP, "narration", "segments.json"),
-  JSON.stringify(manifest, null, 2) + "\n"
-);
-
-console.log(`segments: ${segments.length}  per beat: ${JSON.stringify(perBeat)}`);
-console.log(`spoken words: ${words} (transcript target 1897)`);
-console.log(`chars to synthesize: ${chars}`);
-if (words !== 1897) {
-  console.error("WORD COUNT MISMATCH — transcript changed; update the target.");
-  process.exit(1);
-}
+const words = segments.reduce((sum, segment) => sum + segment.text.split(/\s+/).length, 0);
+const pauses = segments.reduce((sum, segment) => sum + segment.pauseMs, 0);
+console.log(`${segments.length} segments, ${words} spoken words, ${pauses / 1000}s of marked pauses`);

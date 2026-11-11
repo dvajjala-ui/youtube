@@ -1,0 +1,620 @@
+{
+  "title": "E02 — The Cleanup Script That Deleted 883 Sites",
+  "incident": "Atlassian cloud outage, 5 April 2022",
+  "format": "long_form",
+  "fps": 30,
+  "language": "en",
+  "speed": 0.92,
+  "segments": [
+    {
+      "id": "b1-01",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "concerned",
+      "shot": "ticket",
+      "text": "At seven forty-six on a Tuesday morning, a customer reported that they couldn't get into their Atlassian site. Eight minutes earlier, a maintenance job had started. It was supposed to remove an old app. The job was still running when the ticket came in.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b1-02",
+      "speaker": "sam",
+      "voice": "5568a7df-e5ab-4442-9fae-2e9ba1b15ad8",
+      "dramatized": true,
+      "expression": "concerned",
+      "shot": "desk",
+      "text": "Their whole team uses that address. What do I tell them to open instead?",
+      "pauseMs": 700
+    },
+    {
+      "id": "b1-03",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": true,
+      "expression": "uneasy",
+      "shot": "desk",
+      "text": "I can tell you what we were trying to remove. I need to check what we actually touched.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b1-04",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "grave",
+      "shot": "clock",
+      "text": "By eight oh one, the script had deleted eight hundred and eighty-three cloud sites. Seven hundred and seventy-five customers were affected. For some of them, getting back in took up to fourteen days. The first production batch had worked. To see what changed, we need to see what that first batch actually proved.",
+      "pauseMs": 700
+    },
+    {
+      "id": "b2-01",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": true,
+      "expression": "dry",
+      "shot": "office",
+      "text": "My favorite kind of maintenance ticket is the one I can finish before my coffee gets cold. This one even had an existing script.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b2-02",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "neutral",
+      "shot": "office",
+      "text": "Atlassian had brought the functionality of a standalone app called Insight into Jira Service Management. The old standalone installations still needed to be removed. If you're cleaning up one of those installations, you'd expect the rest of the customer's work to be there when you finish.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b2-03",
+      "speaker": "maya",
+      "voice": "a33f7a4c-100f-41cf-a1fd-5822e8fc253f",
+      "dramatized": true,
+      "expression": "focused",
+      "shot": "office",
+      "text": "Show me what we're removing. Start with what the customer sees.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b2-04",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "neutral",
+      "shot": "site-map",
+      "text": "Picture the address your team opens to get to its work. That address takes you to a cloud site. You might get to Jira there, or Confluence, depending on what the team uses. Insight was an app installed for some of those customers. Take the old app away and the site should still open. In a change ticket, that sounds obvious. Once you're looking at a list of identifiers, you need a way to verify which object each identifier belongs to.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b2-05",
+      "speaker": "maya",
+      "voice": "a33f7a4c-100f-41cf-a1fd-5822e8fc253f",
+      "dramatized": true,
+      "expression": "dry",
+      "shot": "site-map",
+      "text": "I'll sign off on the little box. Leave my giant box where it is.",
+      "pauseMs": 550
+    },
+    {
+      "id": "b2-06",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "neutral",
+      "shot": "site-map",
+      "text": "That was the job as everybody understood it. The interesting part is what the checks had actually looked at.",
+      "pauseMs": 700
+    },
+    {
+      "id": "b3-01",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "neutral",
+      "shot": "review",
+      "text": "The script went through peer review. The reviewers looked at the endpoint and how it was called. The script was also tested in staging. Staging didn't contain the production identifiers, so it couldn't tell the team which objects those identifiers would pick. It was still a sensible place to test the script. It left a separate question for somebody to answer before production.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b3-02",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": true,
+      "expression": "relieved",
+      "shot": "first-batch",
+      "text": "First batch. Thirty sites. The old app is gone and the sites are still there. I think I can finish this while the coffee's still technically a liquid.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b3-03",
+      "speaker": "maya",
+      "voice": "a33f7a4c-100f-41cf-a1fd-5822e8fc253f",
+      "dramatized": true,
+      "expression": "focused",
+      "shot": "first-batch",
+      "text": "Where did the next list come from?",
+      "pauseMs": 300
+    },
+    {
+      "id": "b3-04",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": true,
+      "expression": "uneasy",
+      "shot": "first-batch",
+      "text": "A handoff. The first list was collected earlier.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b3-05",
+      "speaker": "vik",
+      "voice": "382109c0-5c85-4fd1-9d94-b3ec07a4486b",
+      "dramatized": true,
+      "expression": "focused",
+      "shot": "first-batch",
+      "text": "Then what have we checked about this list?",
+      "pauseMs": 850
+    },
+    {
+      "id": "b3-06",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "neutral",
+      "shot": "first-batch",
+      "text": "The thirty were real evidence. The process had removed the right app on those sites. The second batch was a separate set of production inputs. The review hadn't independently checked that each value in that set represented the thing the team intended to remove.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b3-07",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "grave",
+      "shot": "clock",
+      "text": "On April fifth, the next run began at seven thirty-eight. Let's look at what that list meant to the deletion service.",
+      "pauseMs": 700
+    },
+    {
+      "id": "b4-01",
+      "speaker": "maya",
+      "voice": "a33f7a4c-100f-41cf-a1fd-5822e8fc253f",
+      "dramatized": true,
+      "expression": "focused",
+      "shot": "screen-share",
+      "text": "Pull up one value from the second list. What does it resolve to?",
+      "pauseMs": 300
+    },
+    {
+      "id": "b4-02",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": true,
+      "expression": "uneasy",
+      "shot": "screen-share",
+      "text": "One second.",
+      "pauseMs": 650
+    },
+    {
+      "id": "b4-03",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": true,
+      "expression": "shocked",
+      "shot": "target-lookup",
+      "text": "That's the whole site.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b4-04",
+      "speaker": "maya",
+      "voice": "a33f7a4c-100f-41cf-a1fd-5822e8fc253f",
+      "dramatized": true,
+      "expression": "focused",
+      "shot": "target-lookup",
+      "text": "And the same service knows how to delete that too?",
+      "pauseMs": 300
+    },
+    {
+      "id": "b4-05",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": true,
+      "expression": "grave",
+      "shot": "target-lookup",
+      "text": "Yes. An app identifier meant remove the app. A site identifier meant remove the site. Both were valid inputs to the same deletion interface. The second list came from a handoff between teams and contained the cloud site identifiers. There was no warning to make the caller confirm which kind of deletion it was asking for. The service did exactly what it had been asked to do.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b4-06",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "grave",
+      "shot": "clock",
+      "text": "The script went through the list one site at a time. The support ticket came in at seven forty-six, while the job was still going. The run ended at eight oh one. Monitoring hadn't caught the deletion as an outage because it went through a standard workflow. Atlassian started its major incident process at eight seventeen. At eight fifty-three, responders confirmed the ticket and the script were connected.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b4-07",
+      "speaker": "ellis",
+      "voice": "5ee9feff-1265-424a-9d7f-8e4d431a12c7",
+      "dramatized": true,
+      "expression": "focused",
+      "shot": "clock",
+      "text": "I've got the timeline for the run. We can use that to check which sites we need to recover.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b4-08",
+      "speaker": "vik",
+      "voice": "382109c0-5c85-4fd1-9d94-b3ec07a4486b",
+      "dramatized": true,
+      "expression": "focused",
+      "shot": "clock",
+      "text": "Get me the affected list. Sam, stay with the customers. Maya, find out what getting one site back actually takes.",
+      "pauseMs": 700
+    },
+    {
+      "id": "b5-01",
+      "speaker": "sam",
+      "voice": "5568a7df-e5ab-4442-9fae-2e9ba1b15ad8",
+      "dramatized": true,
+      "expression": "concerned",
+      "shot": "support-form",
+      "text": "The form wants a valid site address. That's the address they're calling us about. Can we get their case to someone without sending them back through this page?",
+      "pauseMs": 300
+    },
+    {
+      "id": "b5-02",
+      "speaker": "vik",
+      "voice": "382109c0-5c85-4fd1-9d94-b3ec07a4486b",
+      "dramatized": true,
+      "expression": "focused",
+      "shot": "support-form",
+      "text": "Take the details you have. I need a way to track who's waiting and who owns the next update.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b5-03",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "neutral",
+      "shot": "support-form",
+      "text": "Some affected customers couldn't create a new ticket through the usual route because it expected a valid cloud URL. Atlassian also reported losing access to some customer contact information. To the customer, both problems looked the same. Their work was gone, and they couldn't tell whether anyone knew their team was affected.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b5-04",
+      "speaker": "sam",
+      "voice": "5568a7df-e5ab-4442-9fae-2e9ba1b15ad8",
+      "dramatized": true,
+      "expression": "strained",
+      "shot": "incident-call",
+      "text": "I've got an account asking if they should tell their whole team to take the day off. What can I actually tell them?",
+      "pauseMs": 300
+    },
+    {
+      "id": "b5-05",
+      "speaker": "vik",
+      "voice": "382109c0-5c85-4fd1-9d94-b3ec07a4486b",
+      "dramatized": true,
+      "expression": "steady",
+      "shot": "incident-call",
+      "text": "Tell them we know the site's affected. Tell them when we'll check in again. I'll give you a recovery time when the team can stand behind one.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b5-06",
+      "speaker": "sam",
+      "voice": "5568a7df-e5ab-4442-9fae-2e9ba1b15ad8",
+      "dramatized": true,
+      "expression": "steady",
+      "shot": "incident-call",
+      "text": "Okay. I can call with that.",
+      "pauseMs": 650
+    },
+    {
+      "id": "b5-07",
+      "speaker": "sam",
+      "voice": "5568a7df-e5ab-4442-9fae-2e9ba1b15ad8",
+      "dramatized": true,
+      "expression": "focused",
+      "shot": "outreach",
+      "text": "I've got an older case for this company. I can check who they already talk to here. Once we verify the contact, I'll keep the updates together so they don't have to tell the story again on every call.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b5-08",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "neutral",
+      "shot": "outreach",
+      "text": "Customer-facing teams rebuilt contact lists using records they could still access, including prior support tickets. They aimed to keep one incident-related ticket for each affected site. That gave the people doing outreach somewhere to follow the engineering progress and put the next update.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b5-09",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "neutral",
+      "shot": "outreach",
+      "text": "Engineers, support, program managers, and communications staff worked across shifts. The core response team met every three hours. Atlassian also had to give affected customers a better way to raise issues and get updates. A restore queue and a customer contact list are different jobs. The team had to connect them while both were changing.",
+      "pauseMs": 700
+    },
+    {
+      "id": "b6-01",
+      "speaker": "vik",
+      "voice": "382109c0-5c85-4fd1-9d94-b3ec07a4486b",
+      "dramatized": true,
+      "expression": "focused",
+      "shot": "site-board",
+      "text": "Maya, where are we on the first site?",
+      "pauseMs": 300
+    },
+    {
+      "id": "b6-02",
+      "speaker": "maya",
+      "voice": "a33f7a4c-100f-41cf-a1fd-5822e8fc253f",
+      "dramatized": true,
+      "expression": "focused",
+      "shot": "site-board",
+      "text": "The product data's back in the new site. We're still checking who can get to it.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b6-03",
+      "speaker": "ellis",
+      "voice": "5ee9feff-1265-424a-9d7f-8e4d431a12c7",
+      "dramatized": true,
+      "expression": "focused",
+      "shot": "site-board",
+      "text": "I'll try it as a regular user. My admin account can get through things their accounts can't.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b6-04",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "neutral",
+      "shot": "site-board",
+      "text": "Atlassian's existing recovery process made a new site to replace the deleted one. That gave the site a new identifier. Other systems had stored the old identifier in records that pointed back to the site. So the job included restoring data and reconnecting it to the right place. That could mean users and permissions, attachments, service data, and third-party apps.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b6-05",
+      "speaker": "maya",
+      "voice": "a33f7a4c-100f-41cf-a1fd-5822e8fc253f",
+      "dramatized": true,
+      "expression": "focused",
+      "shot": "remap",
+      "text": "Think of an attachment. You can have the file sitting in storage, and the issue sitting in Jira. If the reference still points at the old site, clicking it can fail. When I say the data's back, that's one box on the checklist.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b6-06",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "neutral",
+      "shot": "restore-clock",
+      "text": "There was a time problem as well as an identity problem. Different parts of a site had to be brought back to a consistent point. For most customers, Atlassian chose a point five minutes before the deletion for the main product databases. Other stores had to be brought in line with it or caught up using recorded events. If one piece is further ahead than another, you can end up with a page that remembers an attachment the file store hasn't recovered yet.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b6-07",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "neutral",
+      "shot": "restore-clock",
+      "text": "The first approach was roughly seventy individual steps, many of them dependent on the step before. One group worked through the early restorations manually and checked the sequence. Another built automation to run more of that process safely. The first customers got their sites back on April eighth.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b6-08",
+      "speaker": "sam",
+      "voice": "5568a7df-e5ab-4442-9fae-2e9ba1b15ad8",
+      "dramatized": true,
+      "expression": "relieved",
+      "shot": "site-board",
+      "text": "They've signed in. I'm going to wait while they open the thing they actually came back to work on.",
+      "pauseMs": 650
+    },
+    {
+      "id": "b6-09",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "grave",
+      "shot": "site-board",
+      "text": "Getting that first group back mattered. The same approach still meant spending a great deal of time rebuilding relationships around every new site. So the next question was whether the team could keep those relationships in place.",
+      "pauseMs": 700
+    },
+    {
+      "id": "b7-01",
+      "speaker": "maya",
+      "voice": "a33f7a4c-100f-41cf-a1fd-5822e8fc253f",
+      "dramatized": true,
+      "expression": "focused",
+      "shot": "restore-paths",
+      "text": "We keep having to teach every system the new name. What happens if the site comes back under the old one?",
+      "pauseMs": 300
+    },
+    {
+      "id": "b7-02",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": true,
+      "expression": "curious",
+      "shot": "restore-paths",
+      "text": "Then that attachment still knows which site it's supposed to belong to.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b7-03",
+      "speaker": "maya",
+      "voice": "a33f7a4c-100f-41cf-a1fd-5822e8fc253f",
+      "dramatized": true,
+      "expression": "steady",
+      "shot": "restore-paths",
+      "text": "Right. We still have to put the attachment and the rest of the data back. But we're removing a whole class of work.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b7-04",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "neutral",
+      "shot": "restore-paths",
+      "text": "On April ninth, Atlassian proposed a second approach. Recreate the records for the site and reuse its original identifiers. That avoided much of the remapping and let more teams restore their pieces at the same time. The new process still had over thirty steps. And before it could handle larger batches, it had to be tested and validated in its own right.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b7-05",
+      "speaker": "vik",
+      "voice": "382109c0-5c85-4fd1-9d94-b3ec07a4486b",
+      "dramatized": true,
+      "expression": "focused",
+      "shot": "site-board",
+      "text": "Keep the restores already in progress moving. Give me a small batch on the new route. I want to see what passes before we ask it to take more.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b7-06",
+      "speaker": "ellis",
+      "voice": "5ee9feff-1265-424a-9d7f-8e4d431a12c7",
+      "dramatized": true,
+      "expression": "steady",
+      "shot": "site-board",
+      "text": "I'll run the same user and attachment checks on the new route. We'll know if it gets people back to the same place.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b7-07",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "neutral",
+      "shot": "site-board",
+      "text": "Teams ran both approaches in parallel. They adapted automation, tested the second route, and checked that sites actually worked. A site that existed again still needed the right users, access, products, and data before the customer could return to it.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b7-08",
+      "speaker": "vik",
+      "voice": "382109c0-5c85-4fd1-9d94-b3ec07a4486b",
+      "dramatized": true,
+      "expression": "steady",
+      "shot": "handoff",
+      "text": "Before you hand this over, put the route and the last check on the issue. The next person needs to know where to pick up and what they can trust.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b7-09",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "neutral",
+      "shot": "handoff",
+      "text": "That's where the tracking mattered. With two processes running and people changing shifts, an update like “restore running” could mean very different things. The team needed to see which sites were still being worked on, which were being checked, and which had been returned to customers.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b7-10",
+      "speaker": "daniel",
+      "voice": "b24f41fd-00a3-4cd8-992a-a0c9f13f3ef1",
+      "dramatized": true,
+      "expression": "steady",
+      "shot": "public-update",
+      "text": "What do we know about the sites still waiting?",
+      "pauseMs": 300
+    },
+    {
+      "id": "b7-11",
+      "speaker": "sam",
+      "voice": "5568a7df-e5ab-4442-9fae-2e9ba1b15ad8",
+      "dramatized": true,
+      "expression": "concerned",
+      "shot": "public-update",
+      "text": "Some are further along. I can't tell every customer they'll be back tomorrow.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b7-12",
+      "speaker": "daniel",
+      "voice": "b24f41fd-00a3-4cd8-992a-a0c9f13f3ef1",
+      "dramatized": true,
+      "expression": "grave",
+      "shot": "public-update",
+      "text": "Then say how far we've got and how long the remaining work could take. People are planning around this.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b7-13",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "grave",
+      "shot": "public-update",
+      "text": "On April twelfth, Atlassian's CTO published an update explaining the incident and warning that recovery for some customers could take up to two weeks. By April eighteenth, all sites had been restored. For people who had been waiting since the start, that was almost two weeks of finding another way to work.",
+      "pauseMs": 700
+    },
+    {
+      "id": "b8-01",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "neutral",
+      "shot": "preview",
+      "text": "Let's replay one row from the second batch with a different rule. Tell the job in advance that every target must be an app. Resolve the identifiers in production without changing anything. If even one points to a cloud site, stop the batch and show the mismatch before the job can send a delete.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b8-02",
+      "speaker": "maya",
+      "voice": "a33f7a4c-100f-41cf-a1fd-5822e8fc253f",
+      "dramatized": true,
+      "expression": "dry",
+      "shot": "preview",
+      "text": "That's the preview I'd want on the review.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b8-03",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "neutral",
+      "shot": "preview",
+      "text": "That screen is an example of a guardrail. Atlassian reported blocking bulk site deletion and described plans for safer deletion and testing recovery across multiple sites. Those controls address two different moments. One puts a barrier in front of the mistake. The other gives the team a way back when something still goes wrong.",
+      "pauseMs": 300
+    },
+    {
+      "id": "b8-04",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": true,
+      "expression": "dry",
+      "shot": "desk",
+      "text": "The coffee's cold. Fair enough.",
+      "pauseMs": 750
+    },
+    {
+      "id": "b8-05",
+      "speaker": "arjun",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "dramatized": false,
+      "expression": "steady",
+      "shot": "desk",
+      "text": "If you own a job that can make a permanent change, ask to see one real target resolved before you approve the run. Then ask how the job proves the rest of the list is the same kind of target. That's a check a reviewer can actually run.",
+      "pauseMs": 700
+    }
+  ]
+}
