@@ -5,6 +5,7 @@
     "dev": "remotion studio src/index.ts",
     "render": "remotion render src/index.ts E02Short out/e02-atlassian-short.mp4",
     "render:host": "remotion render src/index.ts E02HostOpening out/e02-host-opening.mp4",
+    "render:cold": "remotion render src/index.ts E02ColdOpen out/e02-cold-open.mp4",
     "typecheck": "tsc --noEmit"
   },
   "studio": {

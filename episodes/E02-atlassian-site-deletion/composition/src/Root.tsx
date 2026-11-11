@@ -2,6 +2,7 @@ import React from "react";
 import {Composition} from "remotion";
 import {Short, clock} from "./Short";
 import {HostOpening, hostClock} from "./HostOpening";
+import {ColdOpen, coldClock, coldTotalFrames} from "./ColdOpen";
 
 export const Root = () => (
   <>
@@ -28,6 +29,14 @@ export const Root = () => (
       height={1080}
       fps={hostClock.fps}
       durationInFrames={hostClock.totalFrames}
+    />
+    <Composition
+      id="E02ColdOpen"
+      component={ColdOpen}
+      width={1920}
+      height={1080}
+      fps={coldClock.fps}
+      durationInFrames={coldTotalFrames}
     />
     <Composition
       id="E02Short"
