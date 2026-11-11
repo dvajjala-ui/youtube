@@ -1,0 +1,21 @@
+{
+  "name": "explainer-01-redis-streams",
+  "bg": "#120F1A",
+  "ink": "#F4EEE4",
+  "dim": "#8E879C",
+  "fail": "#F0506E",
+  "ok": "#B6F36B",
+  "warn": "#FF8A3D",
+  "panel": "#1B1726",
+  "panelBorder": "#2E2840",
+  "accent": "#FF8A3D",
+  "grid": 80,
+  "state": "#9D7BFF",
+  "meaning": {
+    "warn": "an entry (data packet) moving through the system",
+    "state": "group bookkeeping: cursor and pending entries list",
+    "ok": "acknowledged / done",
+    "fail": "crashed, lost or idle",
+    "dim": "not being discussed"
+  }
+}

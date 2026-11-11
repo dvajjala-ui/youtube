@@ -1,0 +1,15 @@
+{
+  "title": "PostgreSQL 18: Asynchronous I/O (portfolio feature reel)",
+  "subject": "PostgreSQL 18 asynchronous I/O subsystem, released 2025-09-25",
+  "format": "short_vertical",
+  "fps": 30,
+  "language": "en",
+  "speed": 1.0,
+  "segments": [
+    { "id": "s1", "text": "Postgres used to read your table one block at a time, and wait." },
+    { "id": "s2", "text": "Sequential scans, bitmap scans, vacuum. Each read waits for the last. The O S can't see what's coming." },
+    { "id": "s3", "text": "Postgres eighteen adds asynchronous I O. Backends queue many reads at once. I O method: worker, I O U ring, or sync." },
+    { "id": "s4", "text": "The default is worker. Three I O workers. Benchmarks show up to three times faster reads from storage." },
+    { "id": "s5", "text": "Upgrade. Keep the default. Measure. Postgres eighteen, out now." }
+  ]
+}

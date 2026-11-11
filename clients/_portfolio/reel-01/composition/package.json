@@ -1,0 +1,8 @@
+{
+  "name": "portfolio-reel-01",
+  "private": true,
+  "scripts": { "dev": "remotion studio src/index.ts" },
+  "studio": { "comp": "Main", "out": "out/reel-01.mp4", "comps": { "Main": "out/reel-01.mp4" } },
+  "dependencies": { "@remotion/cli": "^4.0.0", "@studio/kit": "*", "react": "^19.0.0", "react-dom": "^19.0.0", "remotion": "^4.0.0" },
+  "devDependencies": { "@types/react": "^19.0.0", "typescript": "^5.6.0" }
+}
