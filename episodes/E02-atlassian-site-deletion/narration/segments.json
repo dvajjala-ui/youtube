@@ -1,34 +1,581 @@
 {
-  "title": "The Script That Deleted 883 Atlassian Sites",
+  "title": "E02 — The cleanup script that deleted 883 sites (full episode)",
   "incident": "Atlassian cloud outage, 5 April 2022",
-  "format": "short_vertical",
+  "format": "long_form",
   "fps": 30,
   "language": "en",
-  "speed": 1,
+  "speed": 0.92,
   "segments": [
     {
-      "id": "hook",
-      "text": "The test passed. The first production batch worked. The next one deleted eight hundred and eighty-three Atlassian sites."
+      "id": "b1-01",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "phone",
+      "text": "At seven forty-six in the morning, a customer opened a support ticket. Their entire site was gone. Not one project. Not one board. The site. The place their company kept its work.",
+      "pauseMs": 400
     },
     {
-      "id": "intent",
-      "text": "It was April fifth, twenty twenty-two. The team was retiring an app called Insight. The script needed app IDs. The second list contained site IDs."
+      "id": "b1-02",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "terminal",
+      "text": "Eight minutes earlier, a maintenance script had started its second batch. The first batch went exactly as planned. Same script. Same green checks. But the second list did not point at apps. It pointed at the sites themselves.",
+      "pauseMs": 400
     },
     {
-      "id": "reveal",
-      "text": "The deletion API accepted either kind. Give it an app ID, and it removes the app. Give it a site ID, and the whole site goes."
+      "id": "b1-03",
+      "speaker": "arjun",
+      "expression": "shock",
+      "gesture": "rest",
+      "shot": "counter",
+      "text": "Eight hundred and eighty-three sites. Deleted in twenty-three minutes. Seven hundred and seventy-five customers.",
+      "pauseMs": 400
     },
     {
-      "id": "impact",
-      "text": "Seven hundred and seventy-five customers lost access. Even some contact records disappeared. Affected users could struggle to file a support ticket about the outage."
+      "id": "b1-04",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "chat",
+      "text": "And the monitoring said nothing. Because deleting a site was a normal workflow. No alarm fired. No dashboard turned red. The system reported a routine job, running normally.",
+      "pauseMs": 400
     },
     {
-      "id": "recovery",
-      "text": "The team sped up recovery by rebuilding records with the original site IDs. Some customers waited up to fourteen days."
+      "id": "b1-05",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "title",
+      "text": "Some of those customers would wait fourteen days to get their work back. This is how a routine cleanup became a fourteen-day recovery. And the one check that would have stopped it.",
+      "pauseMs": 2000
     },
     {
-      "id": "lesson",
-      "text": "A green test tells you what happened with the inputs you tested. Before a destructive job, show what the real batch will touch."
+      "id": "b2-01",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "analogy",
+      "text": "Start with what a cloud site is. Think of it as a home for a customer's Atlassian products. Jira lives there. Confluence lives there. Users, permissions, files, settings — all tied to that one address.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b2-02",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "analogy",
+      "text": "For the customer, that home is not abstract. It is every ticket their support team ever answered. Every decision their engineers wrote down. Every file somebody attached at two in the morning. It is the company's memory, at one URL. And for some of those customers, there was no second copy. The site was the archive.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b2-03",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "analogy",
+      "text": "Now picture one app inside that home. It was called Insight. Atlassian was retiring an older version of it. The job was simple to say: take the old app out, leave the home standing.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b2-04",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "analogy",
+      "text": "On screen: a box, and a card inside the box. Pull the card out. The box stays. That was the whole plan.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b2-05",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "sitecard",
+      "text": "The maintenance script called a deletion interface to do it. And here is the detail the entire incident turns on. That interface accepted two kinds of identifier. Give it an app ID, it removes one app. Give it a site ID, it removes the home.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b2-06",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "sitecard",
+      "text": "Both inputs were valid. Both returned success. The tool had no opinion about which one you meant. Same endpoint. Same call. Same green response. Only the identifier decided how much disappeared.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b2-07",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "sitecard",
+      "text": "The plan depended on the list pointing at the right kind of object. Nothing in the tool enforced that. It was a promise made in a spreadsheet, kept by humans. And spreadsheets do not fail loudly.",
+      "pauseMs": 800
+    },
+    {
+      "id": "b3-01",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "review",
+      "text": "Now, the part that makes this worth studying. Because this script was not reckless. It was reviewed.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b3-02",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "review",
+      "text": "The peer review looked at the endpoint and how the script called it. The code was correct. The reviewers did not check what the production identifiers would resolve to. That question was not on the checklist. And honestly, reviews are built to catch wrong code, not wrong data. The code was the part everyone knew how to check.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b3-03",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "staging",
+      "text": "Then staging. The script ran there and behaved. But the production identifiers did not exist in staging. So staging could not tell anyone what those exact values would select in production. It tested the tool. It could not test the list.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b3-04",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "batch",
+      "text": "Then the first real batch. Thirty sites. The old app came out. Every site stayed up. That success is the most dangerous check of the three. It proves the last list was right. It says nothing about the next one.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b3-05",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "checks",
+      "text": "Look at the three green checks an engineer sees that morning. Review complete. Staging tested. First batch successful.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b3-06",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "checks",
+      "text": "Each check is real. Each one answers a narrower question than the team needed answered. Review asked: is the code right? Staging asked: does the tool work? Batch one asked: did the last list behave?",
+      "pauseMs": 400
+    },
+    {
+      "id": "b3-07",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "checks",
+      "text": "Nobody asked the question that mattered: what does each identifier in the next list actually select?",
+      "pauseMs": 400
+    },
+    {
+      "id": "b3-08",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "checks",
+      "text": "Three green checks. Zero answers to the dangerous question. And the second batch was already queued.",
+      "pauseMs": 1500
+    },
+    {
+      "id": "b4-01",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "ids",
+      "text": "According to Atlassian, a miscommunication put site identifiers into the list where app identifiers were intended.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b4-02",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "ids",
+      "text": "Put the two lists side by side. Two columns of opaque values. No label says \"this one is a home.\" A reviewer staring at a single ID has no obvious clue about the size of the thing it points at. The scope only exists after you resolve it against the system's records. Watch the labels fade. This is what the operator actually sees: values, not objects.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b4-03",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "resolve",
+      "text": "So follow one input through.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b4-04",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "resolve",
+      "text": "First run: the input resolves to the Insight app. The app disappears. The site remains. Green OK.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b4-05",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "resolve",
+      "text": "Second run: the input resolves to the customer site. The same interface acts on the larger object. The site disappears. And the script moves to the next row. Green OK. Nothing in the log separates those two rows. Same status, same shape, same silence.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b4-06",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "resolve",
+      "text": "That is why a successful return can lie to you. \"OK\" means the tool did exactly what it understood. It does not mean the tool understood what you meant.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b4-07",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "terminal",
+      "text": "At seven thirty-eight the batch starts. Rows resolve. Rows delete. Every row returns OK. The console looks healthy while it eats eight hundred and eighty-three homes. Twenty-three minutes from first row to last.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b4-08",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "terminal",
+      "text": "A production check has to compare the result against the intent. Not against the return code.",
+      "pauseMs": 800
+    },
+    {
+      "id": "b5-01",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "chat",
+      "text": "The first clue did not come from a dashboard. It came from a customer.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b5-02",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "chat",
+      "text": "Seven forty-six. The job is still running. A ticket lands: our entire site is gone. Then another. Then the pattern nobody wants to see: it is not just one customer.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b5-03",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "dashboard",
+      "text": "Atlassian's internal monitoring missed it, because the sites went away through a standard workflow. The platform had a normal path for removing a site. That morning, hundreds of sites walked down it for the wrong reason. Nothing looked abnormal. Everything was abnormal.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b5-04",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "chat",
+      "text": "Eight seventeen: the major incident process begins. Eight fifty-three: the team connects the support report to the maintenance script. Eight minutes from batch start to first ticket. Thirty-nine minutes to a declared major incident.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b5-05",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "form",
+      "text": "And then a cruelty worth sitting with. The deleted records included some of the information used to contact the people affected. And the normal support form asked for a valid cloud URL for your site.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b5-06",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "form",
+      "text": "Read that again. The front door to support expected the very thing you were trying to report missing.",
+      "pauseMs": 800
+    },
+    {
+      "id": "b5-07",
+      "speaker": "maya",
+      "expression": "shock",
+      "gesture": "rest",
+      "shot": "call",
+      "dramatized": true,
+      "text": "I can't file the form. It wants our site URL. Our site is what's missing.",
+      "voice": "a33f7a4c-100f-41cf-a1fd-5822e8fc253f",
+      "pauseMs": 400
+    },
+    {
+      "id": "b5-08",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "call",
+      "dramatized": true,
+      "text": "I know. Stay on the line. We'll find you another way in.",
+      "voice": "cc71692b-f326-499b-8f8f-90a415b4d3fb",
+      "pauseMs": 600
+    },
+    {
+      "id": "b5-09",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "chat",
+      "text": "Every workaround was manual. Every conversation cost time the recovery did not have. So the recovery team had two jobs at once. Bring the sites back. And rebuild a way to reach the people who owned them.",
+      "pauseMs": 800
+    },
+    {
+      "id": "b6-01",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "anatomy",
+      "text": "Here is what \"restore a site\" actually means.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b6-02",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "anatomy",
+      "text": "A site is not one row. It is a catalogue record that says the site exists. Identity settings. Users and groups. Product databases. File attachments. Billing and support systems. And apps made by other companies that still point at the same site.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b6-03",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "anatomy",
+      "text": "Many of those connections hang off a stable identifier. Change the identifier, and every reference has to be taught the new address.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b6-04",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "remap",
+      "text": "The first recovery route did exactly that. Make a new site for each deleted one. Restore product data and configuration into it. Then chase every old reference and remap it. Attachments back to the right site. Permissions back to the right users. External apps, again, by hand. And every remap is a chance to introduce a new mistake. Point an attachment at the wrong site, and you have built a second incident inside the first one.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b6-05",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "checklist",
+      "text": "Atlassian describes this route as roughly seventy individual steps. Some automatable. Many dependent on earlier steps finishing in the right order.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b6-06",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "checklist",
+      "text": "The team split in two. One group proved the steps on a small set. The other turned proven steps into automation for batches. April fifth to April eighth: three days just to prove the route on a handful of sites.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b6-07",
+      "speaker": "arjun",
+      "expression": "smile",
+      "gesture": "rest",
+      "shot": "daycounter",
+      "text": "April eighth: the first customers come back. Real progress. You can feel the relief in the room.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b6-08",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "daycounter",
+      "text": "And then the math lands. If every site needs that much remapping, the remaining hundreds stretch into weeks. The route works. The route does not scale.",
+      "pauseMs": 2000
+    },
+    {
+      "id": "b6-09",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "daycounter",
+      "text": "They needed a different starting point.",
+      "pauseMs": 800
+    },
+    {
+      "id": "b7-01",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "identity",
+      "text": "The second route asked a quieter question. What if we rebuild the deleted records and keep the old identifiers?",
+      "pauseMs": 400
+    },
+    {
+      "id": "b7-02",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "identity",
+      "text": "Bring back the original site card. Same ID it had before. Now every record that points at that ID can reconnect on its own once the related services and data are restored. No chasing. No remapping. The references were never wrong. The site was just missing. The identifier was the thread holding the whole system together. Cut it, and you re-sew every connection by hand. Keep it, and the system remembers how to assemble itself.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b7-03",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "steps",
+      "text": "Atlassian says reusing identifiers removed more than half of the seventy steps.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b7-04",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "validation",
+      "text": "It was still serious engineering. Reconstruct records across services. Test the procedure. Run long operations in parallel where possible. Then check that each site actually works before handing it back — because a database being online is not the same as a customer being able to log in and see their projects.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b7-05",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "validation",
+      "text": "Support engineers helped test recovered sites and hand them to customers. A site was not done when its database answered. It was done when a customer logged in and found their work waiting.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b7-06",
+      "speaker": "arjun",
+      "expression": "smile",
+      "gesture": "rest",
+      "shot": "daycounter",
+      "text": "April eighteenth: all affected sites progressively restored.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b7-07",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "identity",
+      "text": "The recovery turned on a design detail most customers never see. Keeping a site's identity meant less work putting the system back together. Identity was the recovery plan.",
+      "pauseMs": 800
+    },
+    {
+      "id": "b8-01",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "preview",
+      "text": "Now put yourself back just before the second batch. And imagine one more screen.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b8-02",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "preview",
+      "text": "A preview. Every row shows the identifier, the type of object it resolves to, and the effect of the operation. The summary line reads: eight hundred and eighty-three sites selected.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b8-03",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "preview",
+      "text": "The operator expected apps. The job stops before it changes anything. One screen, thirty seconds, zero deleted homes. No heroics. No recovery. Just a question asked before the damage, instead of after.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b8-04",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "controls",
+      "text": "That is a proposed design, drawn from the incident. The platform could enforce the same rule inside the interface. A job whose intent is to retire apps gets permission to retire apps. If a row resolves to a site, reject the row. Hard limits. Small batches. A check between batches that each site is still present and reachable.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b8-05",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "controls",
+      "text": "Then add a way back. Atlassian committed to wider soft deletion — records first move into a recoverable state — and to practicing multi-site recovery at scale.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b8-06",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "controls",
+      "text": "Each control catches a different failure. Preview catches wrong intent. Type checks catch wrong targets. Recovery practice tests what happens when prevention fails anyway.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b8-07",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "closer",
+      "text": "So here is the check I would add to your next maintenance job. Before it runs: show me the exact production objects this job will change. Can you tell me whether that list matches the plan? Ask it every time the input changes — even when the code and the last run looked fine.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b8-08",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "closer",
+      "text": "And ask the second question: if we have to undo this across the whole batch, who runs that recovery, and when did we last prove it works?",
+      "pauseMs": 400
+    },
+    {
+      "id": "b8-09",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "closer",
+      "text": "The first batch used the right list. The second batch used a different one. The clue was there before the run, in what the identifiers referred to.",
+      "pauseMs": 400
+    },
+    {
+      "id": "b8-10",
+      "speaker": "arjun",
+      "expression": "neutral",
+      "gesture": "rest",
+      "shot": "closer",
+      "text": "The tool said OK. It always says OK. That was never the question.",
+      "pauseMs": 2000
     }
   ]
 }
