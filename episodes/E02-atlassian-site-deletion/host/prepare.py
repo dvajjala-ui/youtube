@@ -52,4 +52,3 @@ for name, length, decay, tones in sound_effects:
         effect.writeframes(samples.tobytes())
 
 print(f"Prepared {len(mouth)} frames of voice activity and two sound effects.")
-

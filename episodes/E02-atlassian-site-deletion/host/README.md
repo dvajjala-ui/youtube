@@ -48,4 +48,3 @@ npm run render:host -w e02-composition
 The TTS command makes new Cartesia calls. Use the current WAV and run only the prepare and render steps when preserving a take. The [shot and voice manifest](narration/segments.json) holds the named beats, script, speaker, expression, gesture, and silence after each take. The generated voice and effect WAVs are local ignored artifacts. For selling or monetizing the finished episode, use a voice take with commercial rights. [Cartesia pricing](https://www.cartesia.ai/pricing) · [Cartesia terms](https://www.cartesia.ai/legal/terms)
 
 For the next acting pass, record the opening at a desk with a real mug. Capture relief, the interrupted movement, and the pause before the technical question. Use the audio and the gesture timing with the rig. Compare this directly against the stock-voice version before producing ten minutes of animation.
-

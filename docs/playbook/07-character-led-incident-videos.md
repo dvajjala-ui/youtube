@@ -65,4 +65,3 @@ Record each reference as `video | in/out | narrator goal | object/character | vi
 A second Indian candidate is Zerodha’s August 29, 2019 incident, when a single order for ten lakh shares was filled across more than one lakh trades and affected its order management system. The count and distinction between shares and trades would drive the visual reveal. [Zerodha postmortem](https://zerodha.com/z-connect/general/post-mortem-of-technical-issue-august-29-2019)
 
 For a regional edition, use local incident sources, time, units, and a natural speaker. Localize the metaphor and room props when they support the event. A team's habit or a confusing button can be the joke. Pronunciation and identity stay part of the performance.
-
